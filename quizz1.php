@@ -13,7 +13,7 @@
                 <h1>Quizz n°1</h1>
             </p>
         </div>
-        <form  action="/result1.php" method="post">
+        <form  action="result1.php" method="post">
             <div>
                 <p>
                     <label for="Question 1">Question 1: Quel est le vrai nom de Bibo ?</label> 
