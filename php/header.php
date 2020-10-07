@@ -8,7 +8,7 @@
 </head>
 
 <header>
-    <h1>
+    <h1 class="titre_header">
         CPourUnQuizz
     </h1>
     <a href="home.php"> Home </a>
