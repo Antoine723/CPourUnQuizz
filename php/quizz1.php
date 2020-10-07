@@ -3,12 +3,12 @@
 <html>
     <head>
         <title>Quizz n°1</title>
-        <link rel="stylesheet" href="quizz1.css"/>
+        <link rel="stylesheet" href="../css/quizz1.css"/>
     </head>
     <body>
         <div>
             <p>
-                <img src="logo_palmashow.jpg"/>
+                <img src="../images/logo_palmashow.jpg"/>
                 </br>
                 <h1>Quizz n°1</h1>
             </p>
