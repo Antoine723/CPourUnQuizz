@@ -5,9 +5,10 @@ header
     text-align: center;
 }
 
-h1
+.titre_header
 {
     font-size: 35px;
+    color:black;
 }
 
 a
