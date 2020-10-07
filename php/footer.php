@@ -10,7 +10,7 @@
     
 </body>
 <footer>
-    <img class = display src = "logo_footer.jpg">
+    <img class = display src = "../images/logo_footer.jpg">
     <p> Y a quelqu'un qui fait notre quizz là ?!</p>
 </footer>
 </html>

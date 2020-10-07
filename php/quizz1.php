@@ -8,7 +8,7 @@
     <body>
         <div>
             <p>
-                <img src="logo_palmashow.jpg"/>
+                <img src="../images/logo_palmashow.jpg"/>
                 </br>
                 <h1>Quizz n°1</h1>
             </p>

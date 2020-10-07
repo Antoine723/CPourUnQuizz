@@ -7,7 +7,7 @@
     <body>
         <div>
             <p>
-                <img src="logo_palmashow.jpg"/>
+                <img src="../images/logo_palmashow.jpg"/>
                 </br>
                 <h1>Résultats du quizz n°1</h1>
             </p>
@@ -17,7 +17,7 @@
                 <h1>Bravo, vous avez obtenu un score de 4/4 !!! </br>C'est un très bon score</h1>
             </p>
             <p>
-                <img src="gif_fireworks.gif"/>
+                <img src="../images/gif_fireworks.gif"/>
             </p>
         </div>
         <div>
