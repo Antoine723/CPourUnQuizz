@@ -1,0 +1,14 @@
+body{
+    background: black /*linear-gradient(to right,gold,black,gold)*/;
+}
+
+h1{
+    text-align: center;
+    color: rgb(253, 234, 127)/* white*/;
+}
+
+p{
+    text-align: center;
+    color: rgb(253, 234, 127)/*white*/;
+}
+
