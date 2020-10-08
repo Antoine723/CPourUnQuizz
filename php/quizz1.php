@@ -17,46 +17,44 @@
         <form  action="result1.php" method="post">
             <div>
                 <p>
-                    <label for="Question 1">Question 1: Quel est le vrai nom de Bibo ?</label> 
+                    <label for="Question 1">Question 1: Qui est le plus fort ?</label> 
                     </br>
-                    <input type="radio" name="Question 1" id="Tibeauld Blacel" value="Tibeauld Blacel">Tibeauld Blacel</input>
+                    <input type="radio" name="Question 1" value="Petit Ours Brun">Petit Ours Brun</input>
                     </br>
-                    <input type="radio" name="Question 1" id="Thibaut Blasselle" value="Thibaut Blasselle">Thibaut Blasselle</input>
-                    </br>
-                    <input type="radio" name="Question 1" id="Bhibaut Tlasselle" value="Bhibaut Tlasselle">Bhibaut Tlasselle</input>
+                    <input type="radio" name="Question 1" value="Trotro">Trotro</input>
                 </p>
             </div>
             <div>
                 <p>
-                    <label for="Question 2">Question 2: Qui est membre du BDS ?</label>
+                    <label for="Question 2">Question 2: Que propose à ses employés le patron de chez Saint-Clou se faisant passer pour un stagiaire ?</label>
                     </br>
-                    <input type="checkbox" name="Erwan" id="Erwan">Erwan</input>
+                    <input type="checkbox" name="alcool" >Alcool</input>
                     </br>
-                    <input type="checkbox" name="Mathias" id="Mathias">Mathias</input>
+                    <input type="checkbox" name="spaghettis" >Spaghettis</input>
                     </br>
-                    <input type="checkbox" name="Antoine" id="Antoine">Antoine</input>
+                    <input type="checkbox" name="stupefiants" >Stupéfiants</input>
                     </br>
-                    <input type="checkbox" name="Thibaut" id="Thibaut">Thibaut</input>
+                    <input type="checkbox" name="charentaises" >Charentaises</input>
                 </p>
             </div>
             <div>
                 <p>
-                    <label for="Question 3">Question 3: Où habite Antoine ?</label>
+                    <label for="Question 3">Question 3: Complétez cette phrase : "Un indien ?" </label>
                     </br>
-                    <input type="text" name="Question 3" id="Question 3" placeholder="Ville"></input>
+                    <input type="text" name="Question 3"></input>
                 </p>
             </div>
             <div>
                 <p>
-                    <label for="Question 4">Question 4: Combien de down Nico fait-il en un zombie ?</label>
+                    <label for="Question 4">Question 4: Comment s'écrit "Nico" ?</label>
                     </br>
                     <select name="Question 4" id="Question 4">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="15">15</option>
-                        <option value="Beaucoup trop">Beaucoup trop</option>
+                        <option value="0">Avec un "N" comme "Nounours"</option>
+                        <option value="1">Ça s'écrit pas ça se dit</option>
+                        <option value="2">Avec un "Q" comme "Connard"</option>
+                        <option value="3">Il doit y avoir un "p" quelque part</option>
+                        <option value="15">Je connais un Nico</option>
+                        <option value="Beaucoup trop">C'est quoi "Nico" ?</option>
                     </select>
                 </p>
             </div>
