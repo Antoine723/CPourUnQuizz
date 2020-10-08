@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
+<?=include("header.php")?>
     <head>
         <title>Résultats du quizz n°2</title>
-        <link rel="stylesheet" href="result2.css">
+        <link rel="stylesheet" href="../css/result1.css">
     </head>
     <body>
         <div>
             <p>
-                <img src="logo.png" alt=""><br>
+                <img src="../images/logo.png" alt=""><br>
                 <h1>Résultats du quizz n°2</h1>
             </p>
         </div>
@@ -16,7 +17,7 @@
                 <h1>Votre score est de 4/4, vous êtes un fin connaisseur</h1>
             </p>
             <p>
-                <img src="gg.gif" alt="">
+                <img src="../images/gg.gif" alt="">
             </p>
         </div>
         <div>
@@ -33,3 +34,6 @@
         </div>
     </body>
 </html>
+
+<br>
+<?=include("footer.php")?>

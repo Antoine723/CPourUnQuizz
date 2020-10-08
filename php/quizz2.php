@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
+<?=include("header.php")?>
     <head>
         <title>Quizz n°2</title>
-        <link rel="stylesheet" href="quizz2.css">
+        <link rel="stylesheet" href="../css/quizz1.css">
     </head>
     <body>
         <div>
             ^<p>
-                <img src="logo.png" alt=""><br>
+                <img src="../images/logo.png" alt=""><br>
                 <h1>Quizz n°2</h1>
             </p>
         </div>
@@ -51,3 +52,6 @@
         </form>
     </body>
 </html>
+
+<br>
+<?=include("footer.php")?>
