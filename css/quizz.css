@@ -1,0 +1,53 @@
+body{
+    background-color: rgb(214, 230, 252);
+    background-image: url(../images/palmashow_bleu.jpg);
+    background-position: center top;
+}
+
+h1.title{
+    text-align: center;
+}
+
+
+.box{
+    display: flex;
+    justify-content: center;   
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.element:nth-child(1){
+    order:1;
+    margin: 20px 4px;
+    text-align: center;
+}
+
+.element:nth-child(2){
+    order:2;
+    margin: 20px 4px;
+    text-align: center;
+}
+
+.element:nth-child(3){
+    order:3;
+    align-self: flex-end;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 50px;
+    margin:10px 4px;
+    color:  #291f4e;
+    font-family: sans-serif;
+    text-align: center;
+    text-decoration: none;
+    border:2px solid ;
+}
+
+.button:hover{
+    color: rgb(255, 255, 255);  
+    background-color:#291f4e ;
+    font-size: x-large;
+    font-weight: bold;
+}
