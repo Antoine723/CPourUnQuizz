@@ -1,11 +1,11 @@
-<?=include("header.php")?>
+<!DOCTYPE html>
 
 <meta charset="utf8">
 <link rel="stylesheet" href="../css/register.css">
 <link rel="stylesheet" href="../css/common.css">
 
 <html>
-
+<?php include("header.php")?>
 
     <body>
         <div class="reg">
@@ -31,15 +31,12 @@
                 <div class="button">
                     <input type="submit" value="S'inscrire">
                 </div>
-            <form>
+            </form>
         
         </div>
 
-
-
-
     </body>
 
-
+<?php include("footer.php")?>
 
 </html>

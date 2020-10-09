@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?=include("header.php")?>
+<?php include("header.php")?>
     <head>
         <title>Résultats du quizz n°2</title>
         <link rel="stylesheet" href="../css/result1.css">
@@ -33,7 +33,7 @@
             </form> 
         </div>
     </body>
-</html>
 
 <br>
-<?=include("footer.php")?>
+<?php include("footer.php")?>
+</html>
