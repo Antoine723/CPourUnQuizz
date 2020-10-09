@@ -1,4 +1,5 @@
-<?=include("header.php")?>
+<!DOCTYPE html>
+
 
 <meta charset="utf8">
 <link rel="stylesheet" href="../css/register.css">
@@ -6,6 +7,7 @@
 
 <html>
 
+<?php include("header.php")?>
 
     <body>
         <div class="reg">
@@ -48,6 +50,6 @@
 
     </body>
 
-
+<?php include("footer.php")?>
 
 </html>
