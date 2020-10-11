@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html>
-<?php include("header.php")?>
+<?php include("header.php");
+echo'
     <head>
         <title>Quizz n°1</title>
         <link rel="stylesheet" href="../css/quizz1.css"/>
@@ -28,13 +29,13 @@
                 <p>
                     <label for="Question 2">Question 2: Que propose à ses employés le patron de chez Saint-Clou se faisant passer pour un stagiaire ?</label>
                     </br>
-                    <input type="checkbox" name="alcool" >Alcool</input>
+                    <input type="checkbox" name="2[]" value="alcool">Alcool</input>
                     </br>
-                    <input type="checkbox" name="spaghettis" >Spaghettis</input>
+                    <input type="checkbox" name="2[]" value="spaghettis">Spaghettis</input>
                     </br>
-                    <input type="checkbox" name="stupefiants" >Stupéfiants</input>
+                    <input type="checkbox" name="2[]" value="stupéfiants" >Stupéfiants</input>
                     </br>
-                    <input type="checkbox" name="charentaises" >Charentaises</input>
+                    <input type="checkbox" name="2[]" value="charentaises" >Charentaises</input>
                 </p>
             </div>
             <div>
@@ -46,15 +47,15 @@
             </div>
             <div>
                 <p>
-                    <label for="Question 4">Question 4: Comment s'écrit "Nico" ?</label>
+                    <label for="Question 4">Question 4: Comment s'.'écrit "Nico" ?</label>
                     </br>
                     <select name="Question 4" id="Question 4">
                         <option value="0">Avec un "N" comme "Nounours"</option>
-                        <option value="1">Ça s'écrit pas ça se dit</option>
+                        <option value="1">Ça s'.'écrit pas ça se dit</option>
                         <option value="2">Avec un "Q" comme "Connard"</option>
                         <option value="3">Il doit y avoir un "p" quelque part</option>
                         <option value="15">Je connais un Nico</option>
-                        <option value="Beaucoup trop">C'est quoi "Nico" ?</option>
+                        <option value="Beaucoup trop">C'.'est quoi "Nico" ?</option>
                     </select>
                 </p>
             </div>
@@ -67,6 +68,7 @@
         </form>
     </body>
 
-<br>
-<?php include("footer.php")?>
-</html>
+<br>';
+include("footer.php");
+echo'
+</html>';
