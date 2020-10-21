@@ -8,8 +8,8 @@ $answers_table=$bdd->query('SELECT * FROM answers INNER JOIN questions ON answer
 
 $score=0;
 
-$j=0;
 $all=$answers_table->fetchall();
+
 foreach($_POST as $key=>$ans){ //Les key seront les ID des questions du quizz (que l'on a saisi dans les name de chaque réponse) : ex pour la question 6, l'ID question est 17, pour cette question key vaudra donc 17
     $check=true;
     
@@ -19,21 +19,22 @@ foreach($_POST as $key=>$ans){ //Les key seront les ID des questions du quizz (q
         while($i<count($all)){
             
             if($all[$i]['Question_ID']==$key) array_push($tab,$all[$i]['Answer']); //On remplit un tableau contenant les réponses à la question actuelle, donc dans le if, on parcourt toutes les réponses du quizz 1 et on regarde quand celles-ci sont des réponses à la question actuelle
+
             $i++;
 
         }
         foreach($ans as $dat){
-
-            if(!in_array($dat,$tab) || count($ans)!=count($tab)){ //Si l'utilisateur n'a pas sélectionné autant de réponses que nécessaires ou que l'une au moins des réponses est incorrecte
-                $check=false;
-            }
+            $tab=str_replace("’",'\'',$tab); //Prendre en compte la différence d'apostrophe entre ' et ’ (on transforme les ’ des chaînes de caractères de la BDD en ')
+            if(!in_array($dat,$tab) || count($ans)!=count($tab)) $check=false; //Si l'utilisateur n'a pas sélectionné autant de réponses que nécessaires ou que l'une au moins des réponses est incorrecte
+                
         }
         if($check) $score++;
-        $j=$j+count($ans);
         }
     else{
-        if(strtolower($all[$j]['Answer'])==strtolower($ans)) $score++;  //A voir pour optimiser en enlevant le j et en travailant avec l'ID question
-        $j++;
+        for($index=0;$index<count($all);$index++){ //On récupère la réponse correspondante à l'ID et on la stocke dans une variable avec laquelle on va comparer la réponse donnée par l'utilisateur
+            if($all[$index]['ID_extQuestions']==$key) $answer=$all[$index]['Answer'];
+        }
+        if(strtolower($answer)==strtolower($ans)) $score++;
     }
     }
     echo("Votre score est de : ".$score);
@@ -47,13 +48,9 @@ foreach($_POST as $key=>$ans){ //Les key seront les ID des questions du quizz (q
             <p>
                 <img src="../images/logo_palmashow.jpg"/>
                 </br>
-                <h1>Résultats du quizz n°1</h1>
             </p>
         </div>
         <div>
-            <p>
-                <h1>Bravo, vous avez obtenu un score de 4/4 !!! </br>C'.'est un très bon score</h1>
-            </p>
             <p>
                 <img src="../images/gif_fireworks.gif"/>
             </p>
