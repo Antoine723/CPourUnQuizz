@@ -4,36 +4,39 @@
 $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
 $answers_table=$bdd->query('SELECT * FROM answers INNER JOIN questions ON answers.ID_extQuestions=questions.Question_ID WHERE questions.ID_extQuizz=1');//On va récupérer les infos avec les champs de la table answers+questions, pour le 1er quizz
 
+
+
 $score=0;
 
-
-
-
-foreach($_POST as $ans){
-    $all=$answers_table->fetchall();
-    $next_ans=$answers_table->fetch();
+$j=0;
+$all=$answers_table->fetchall();
+foreach($_POST as $key=>$ans){ //Les key seront les ID des questions du quizz (que l'on a saisi dans les name de chaque réponse) : ex pour la question 6, l'ID question est 17, pour cette question key vaudra donc 17
     $check=true;
+    
     if(is_array($ans)){ //Si la réponse envoyée est une checkbox
         $i=0;
         $tab=array();
-        while($i<count($all)){//Il faut récupérer le nom de l'input qui va correspondre au numéro de la question
-            if($all[$i]['Question_ID']==17) array_push($tab,$all[$i]['Answer']); //On remplit un tableau contenant les réponses à la question actuelle
+        while($i<count($all)){
+            
+            if($all[$i]['Question_ID']==$key) array_push($tab,$all[$i]['Answer']); //On remplit un tableau contenant les réponses à la question actuelle, donc dans le if, on parcourt toutes les réponses du quizz 1 et on regarde quand celles-ci sont des réponses à la question actuelle
             $i++;
 
         }
         foreach($ans as $dat){
-            if(!in_array($dat,$tab)){
+
+            if(!in_array($dat,$tab) || count($ans)!=count($tab)){ //Si l'utilisateur n'a pas sélectionné autant de réponses que nécessaires ou que l'une au moins des réponses est incorrecte
                 $check=false;
             }
         }
         if($check) $score++;
-        
+        $j=$j+count($ans);
         }
     else{
-        if(strtolower($next_ans['Answer'])==strtolower($ans)) $score++; //Ici, tester la réponse depuis le tableau $all (pas next_ans car n'existe plus)
+        if(strtolower($all[$j]['Answer'])==strtolower($ans)) $score++;  //A voir pour optimiser en enlevant le j et en travailant avec l'ID question
+        $j++;
     }
     }
-    var_dump($tab);
+    echo("Votre score est de : ".$score);
     echo'
     <head>
         <title>Résultats quizz n°1</title>
