@@ -1,19 +1,21 @@
+/* body{
+    background: black /*linear-gradient(to right,gold,black,gold)*/;
+/* } */
 
+h1{
+    text-align: center;
+    color: rgb(253, 234, 127)/* white*/;
+}
 
+p{
+    text-align: center;
+    /* color: rgb(253, 234, 127)white; */
+}
 
-
-.card{
-    background-color:#ccc ;
+.score{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size:1.2em;
-    margin-top: 10px;
-    margin-left: 850px;
-    margin-right: 850px;
-    border-radius: 20px;
-    border:solid black;
-    padding: 20px;
     
 }
 
@@ -22,9 +24,6 @@
     text-align: center;
     font-size: 50px;
 }
-
-
-
 
 
 button {
