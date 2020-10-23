@@ -18,7 +18,6 @@
                 <div class="titre" >CPourUnQuizz</div>
                 <div class="lien">
                     <a class="navigate" href="quizz.php">Quizz</a>
-                    <a class="navigate" href="result.php">Résultat</a>
                     <a class="navigate" href="account.php">Profil</a>
                     <a class="navigate" href="register.php">Register</a>
                     <a class="navigate" href="logIn.php">Log in</a>
