@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 23 oct. 2020 à 14:03
--- Version du serveur :  5.7.31
+-- Généré le : ven. 23 oct. 2020 à 17:20
+-- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `answers`;
 CREATE TABLE IF NOT EXISTS `answers` (
-  `Answers_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Answers_ID` int NOT NULL AUTO_INCREMENT,
   `Answer` text NOT NULL,
-  `ID_extQuestions` int(11) NOT NULL,
+  `ID_extQuestions` int NOT NULL,
   PRIMARY KEY (`Answers_ID`),
   KEY `ID_extQuestions` (`ID_extQuestions`)
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
 --
 
 INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
-(1, 'saucisse lentille', 14),
+(1, 'saucisse lentilles', 14),
 (2, 'et d\'épouser Aladin', 3),
 (3, 'G-Zel', 7),
 (4, 'Le PDC', 6),
@@ -71,19 +71,19 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
 (28, 'David Marsais', 9),
 (29, 'Jonathan Barré', 9),
 (30, 'C\'était en hiver', 10),
-(31, 'Aux alentours de 0 degrés Celsius', 10),
+(31, 'Aux alentours de 0 degré Celsius', 10),
 (32, 'Ils auraient mieux fait de porter des doudounes', 10),
 (33, 'Des petits clous rouillés avec le tétanos', 13),
-(34, 'Des fourmis rouge', 13),
+(34, 'Des fourmis rouges', 13),
 (35, 'Des petites braises', 13),
 (36, 'Denis', 17),
 (37, 'Serge', 17),
 (38, 'Lionel', 17),
-(39, 'Plomberie', 31),
-(40, 'SNCF', 31),
-(41, 'Cabrel', 31),
+(39, 'Master Plomberie', 31),
+(40, 'Master SNCF', 31),
+(41, 'Master Cabrel', 31),
 (42, 'Elle dispose d\'une isolation fougère remarquable', 32),
-(43, 'Check ça !', 33),
+(43, 'Check ça', 33),
 (44, 'Le Mortal Kombat', 34),
 (45, 'Menstruation', 35),
 (46, 'Immigration', 35),
@@ -94,7 +94,7 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
 (51, 'La limonette', 38),
 (52, 'La chenille', 39),
 (53, 'Parce qu\'ils sont deux et parce qu\'ils sont à l\'intérieur', 40),
-(54, 'Monsieur Coktail', 41),
+(54, 'Monsieur Cocktail', 41),
 (55, 'Il faut réserver sur Booking.yes', 42),
 (56, 'ça fait des Ray-ban', 43),
 (57, 'Des millions de petites billes anti-pue de la gueule', 44),
@@ -113,9 +113,9 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
 
 DROP TABLE IF EXISTS `did`;
 CREATE TABLE IF NOT EXISTS `did` (
-  `ID_extPlayer` int(11) NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
+  `ID_extPlayer` int NOT NULL,
+  `ID_extQuizz` int NOT NULL,
+  `Score` int NOT NULL,
   PRIMARY KEY (`ID_extPlayer`,`ID_extQuizz`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `did` (
 
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
-  `Player_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Player_ID` int NOT NULL AUTO_INCREMENT,
   `Username` text NOT NULL,
   `Password` text NOT NULL,
   `Mail` text NOT NULL,
@@ -143,9 +143,9 @@ CREATE TABLE IF NOT EXISTS `player` (
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
-  `Question_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Question_ID` int NOT NULL AUTO_INCREMENT,
   `Content` text NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
+  `ID_extQuizz` int NOT NULL,
   PRIMARY KEY (`Question_ID`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
@@ -200,7 +200,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (43, 'Que se passe-t-il si Alain Afflelou colle ses couilles sur nos yeux ?', 5),
 (44, 'Que contient le dentifrice aux agents actifs spécial blancheur fraîche ?', 5),
 (45, 'Cola-Cola light est la boisson des ?', 5),
-(46, 'Comment dit-on \"Cette phrase est un peu trop long\" d\'après Wall Street England ?', 5),
+(46, 'Comment dit-on \"Cette phrase est un peu trop longue\" d\'après Wall Street England ?', 5),
 (47, 'Comment faire pour retrouver sa mobilité ?', 5),
 (48, 'Qui doit-on remercier pour la délicieuse crème fraîche ?', 5),
 (49, 'Pour un apéro bien réussi il vous faut ?', 5),
@@ -214,7 +214,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 
 DROP TABLE IF EXISTS `quizz`;
 CREATE TABLE IF NOT EXISTS `quizz` (
-  `Quizz_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Quizz_ID` int NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Theme` text NOT NULL,
   PRIMARY KEY (`Quizz_ID`)
