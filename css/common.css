@@ -3,8 +3,8 @@
     background-color:#E8FFFF
 } */
 body{
-    background-color: rgb(214, 230, 252);
-    background-image: url(../images/palmashow_bleu.jpg);
-    background-position: center top;
+    padding: 0;
+    margin: 0;
+    background: url(../images/palmashow_bleu.jpg) no-repeat center fixed;
     -webkit-background-size:cover ;
 }

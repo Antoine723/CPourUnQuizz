@@ -3,6 +3,7 @@
     <?php include("header.php")?>
 
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/common.css">
 
     <body>
         <h1>Bienvenue sur le PalmaQuizz</h1>
