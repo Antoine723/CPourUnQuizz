@@ -7,16 +7,25 @@
     <title><?= ucfirst(basename($_SERVER['SCRIPT_NAME'],'.php')) ?></title>
 </head>
 
-<header>
-    <h1 class="titre_header">
-        CPourUnQuizz
-    </h1>
-    <a href="home.php"> Home </a>
-    <a href="login.php"> Log in </a>
-    <a href="register.php"> Register </a>
-    <a href="logout.php"> Log out </a>
-    <a href="quizz.php"> Quizz </a>
-    <a href="account.php"> Account </a>
-</header>
 
+
+<body>
+    <header>
+            <div class="gauche">
+            <a href="home.php"><img src="../images/logop.png" height="200"></a>    
+            </div>
+            <div class="droite">
+                <div class="titre" >CPourUnQuizz</div>
+                <div class="lien">
+                    <a class="navigate" href="quizz.php">Quizz</a>
+                    <a class="navigate" href="result.php">Résultat</a>
+                    <a class="navigate" href="account.php">Profil</a>
+                    <a class="navigate" href="register.php">Register</a>
+                    <a class="navigate" href="logIn.php">Log in</a>
+                    <a class="navigate" href="" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
+                    
+                </div>
+            </div>
+        </header>
+</body>
 </html>
