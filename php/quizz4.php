@@ -105,7 +105,8 @@
                 echo'
                 <div>
                     <p>
-                        <label for="Question 7">Question 7 : '.$questions[$i]['Content'].'?</label> 
+                        <label for="Question 7">Question 7 : '.$questions[$i]['Content'].'?</label>
+                        </br> 
                         <select name="'.$questions[$i]['Question_ID'].'" id="Question 8">
                                 <option value="Debout, assis, couché">Debout, assis, couché</option>
                                 <option value="Pas de hameçon">Cours, tabasse, tase</option>
