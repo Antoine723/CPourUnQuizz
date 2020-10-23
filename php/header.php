@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/header.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?= ucfirst(basename($_SERVER['SCRIPT_NAME'],'.php')) ?></title>
 </head>
 
 <header>
@@ -18,7 +18,5 @@
     <a href="quizz.php"> Quizz </a>
     <a href="account.php"> Account </a>
 </header>
-<body>
-    
-</body>
+
 </html>
