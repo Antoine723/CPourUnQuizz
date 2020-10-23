@@ -2,6 +2,7 @@
 <html lang="fr">
     <?php include("header.php")?>
     <link rel="stylesheet" href="../css/quizz.css">
+    <link rel="stylesheet" href="../css/common.css">
     <body>
         <div>
             <p>

@@ -1,4 +1,10 @@
-body
+/* body
 {
     background-color:#E8FFFF
+} */
+body{
+    padding: 0;
+    margin: 0;
+    background: url(../images/palmashow_bleu.jpg) no-repeat center fixed;
+    -webkit-background-size:cover ;
 }
