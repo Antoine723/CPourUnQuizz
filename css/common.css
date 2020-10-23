@@ -1,4 +1,10 @@
-body
+/* body
 {
     background-color:#E8FFFF
+} */
+body{
+    background-color: rgb(214, 230, 252);
+    background-image: url(../images/palmashow_bleu.jpg);
+    background-position: center top;
+    -webkit-background-size:cover ;
 }
