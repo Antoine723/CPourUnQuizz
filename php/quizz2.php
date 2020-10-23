@@ -3,12 +3,9 @@
 <html lang="fr">
     <link rel="stylesheet" href="../css/quizz1.css"/>
     <?php include("header.php");
-    $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
-
-    // ------------------------REQUETE BDD----------------------------------------------
-    $answers_table=$bdd->query('SELECT * FROM questions WHERE questions.ID_extQuizz=2');//On va récupérer les infos avec les champs de la table answers+questions, pour le 1er quizz
-    $questions=$answers_table->fetchall();
-    //-----------------------------------------
+    include_once 'database.php';
+    
+    $questions=getAllQuestionsByIdQuizz(2);
 
     $num_quizz=$questions[0]['ID_extQuizz'];
     $i=0;
