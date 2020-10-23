@@ -54,9 +54,11 @@
 
     $score=compute_score($answers);
     //--------------------AFFICHAGE------------------------
-        echo'<div class="score">
+        echo'
+        <div class="card">
+            <div class="score">
                 <div class="display_score">
-                    Votre score est de : '.$score;
+                    Score : '.$score;
                     echo'
                 </div>
                 <div class="comment_score">';
@@ -67,7 +69,7 @@
                 </div>
             </div>';
         echo'
-        <body>
+       
             
                 <form action="quizz1.php">
                     <p>
@@ -85,8 +87,8 @@
                     </p>
                 </form>
             </div>
-        </body>
-
+        
+        </div>
     <br>';
     include("footer.php");
     echo'
