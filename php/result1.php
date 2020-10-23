@@ -2,11 +2,8 @@
 <html lang="fr">
     <link rel="stylesheet" href="../css/result.css"/>
     <?php include("header.php");
-    $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
-    // ------------------------REQUETE BDD----------------------------------------------
-    $answers_table=$bdd->query('SELECT * FROM answers INNER JOIN questions ON answers.ID_extQuestions=questions.Question_ID WHERE questions.ID_extQuizz=1');//On va récupérer les infos avec les champs de la table answers+questions, pour le 1er quizz
-    $answers=$answers_table->fetchall();
-    //-----------------------------------------
+    include_once 'database.php';
+    $answers=getAllAnswersByIdQuizz(1);
 
     //-------------------FONCTIONS-----------------------------------------------------
     function remove_accents($tab) //On va ici gérer la casse (y compris pour l'apostrophe entre ’ et ')
@@ -43,6 +40,7 @@
                 if($check) $score++;
             }
             else{
+                
                 for($index=0;$index<count($answers);$index++){ //On récupère la réponse correspondante à l'ID et on la stocke dans une variable avec laquelle on va comparer la réponse donnée par l'utilisateur
                     if($answers[$index]['ID_extQuestions']==$key) $answer=$answers[$index]['Answer'];
                 }
