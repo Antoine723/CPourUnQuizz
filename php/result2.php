@@ -70,7 +70,7 @@
         echo'
         <body>
             
-                <form action="quizz1.php">
+                <form action="quizz2.php">
                     <p>
                         <button type="submit">Réessayer</button>
                     </p>
