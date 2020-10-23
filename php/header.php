@@ -17,12 +17,12 @@
             <div class="droite">
                 <div class="titre" >CPourUnQuizz</div>
                 <div class="lien">
-                    <a href="quizz.php">Quizz</a>
-                    <a href="result.php">Résultat</a>
-                    <a href="account.php">Profil</a>
-                    <a href="register.php">Register</a>
-                    <a href="logIn.php">Log in</a>
-                    <a href="" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
+                    <a class="navigate" href="quizz.php">Quizz</a>
+                    <a class="navigate" href="result.php">Résultat</a>
+                    <a class="navigate" href="account.php">Profil</a>
+                    <a class="navigate" href="register.php">Register</a>
+                    <a class="navigate" href="logIn.php">Log in</a>
+                    <a class="navigate" href="" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
                     
                 </div>
             </div>

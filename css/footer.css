@@ -1,0 +1,13 @@
+p
+{
+    text-align: center;
+    font-size: 15px;
+}
+
+.display
+{
+    display:block;
+    margin:auto;
+    height:15%;
+    width:15%
+}
