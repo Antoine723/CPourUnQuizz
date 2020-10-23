@@ -1,6 +1,6 @@
-body{
+/* body{
     background: black /*linear-gradient(to right,gold,black,gold)*/;
-}
+/* } */
 
 h1{
     text-align: center;
@@ -9,6 +9,13 @@ h1{
 
 p{
     text-align: center;
-    color: rgb(253, 234, 127)/*white*/;
+    /* color: rgb(253, 234, 127)white; */
+}
+
+.score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size:1.2em;
 }
 

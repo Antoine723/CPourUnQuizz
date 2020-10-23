@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 10 oct. 2020 à 15:00
--- Version du serveur :  5.7.31
+-- Généré le : mer. 21 oct. 2020 à 20:24
+-- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `answers`;
 CREATE TABLE IF NOT EXISTS `answers` (
-  `Answers_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Answers_ID` int NOT NULL AUTO_INCREMENT,
   `Answer` text NOT NULL,
-  `ID_extQuestions` int(11) NOT NULL,
+  `ID_extQuestions` int NOT NULL,
   PRIMARY KEY (`Answers_ID`),
   KEY `ID_extQuestions` (`ID_extQuestions`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
@@ -50,11 +50,11 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
 (7, 'Un petit écureuil', 2),
 (8, 'Ouais', 11),
 (9, 'Pour nous faire chier', 4),
-(10, 'Sortez vous les doigts du cul', 1),
+(10, 'Sortez-vous les doigts du cul', 1),
 (11, 'Pas de chatte', 8),
 (12, 'stomäl', 20),
 (13, 'à la fin ils sont plus amis pour la vie', 15),
-(14, 'On est pas des ringards mais des sacrés fêtards', 16),
+(14, 'Des ringards mais des sacrés fêtards', 16),
 (15, 'Les monos de ski', 18),
 (16, 'Les petits gitans', 19),
 (17, 'Le piment d’Espelette', 21),
@@ -88,9 +88,9 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
 
 DROP TABLE IF EXISTS `did`;
 CREATE TABLE IF NOT EXISTS `did` (
-  `ID_extPlayer` int(11) NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
+  `ID_extPlayer` int NOT NULL,
+  `ID_extQuizz` int NOT NULL,
+  `Score` int NOT NULL,
   PRIMARY KEY (`ID_extPlayer`,`ID_extQuizz`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `did` (
 
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
-  `Player_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Player_ID` int NOT NULL AUTO_INCREMENT,
   `Username` text NOT NULL,
   `Password` text NOT NULL,
   `Mail` text NOT NULL,
@@ -118,9 +118,9 @@ CREATE TABLE IF NOT EXISTS `player` (
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
-  `Question_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Question_ID` int NOT NULL AUTO_INCREMENT,
   `Content` text NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
+  `ID_extQuizz` int NOT NULL,
   PRIMARY KEY (`Question_ID`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
 INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (1, 'Compléter les paroles :\r\n\r\nAllez l\'équipe de France on y croit, on vous fait confiance ! Foncez rien n\'est perdu mais ...', 1),
 (2, 'Quelle est la fameuse comptine de notre enfance ?', 1),
-(3, 'Compléter les paroles :\r\n\r\nLiberté, c\'est de me faire une couleur, d\'enfin écouter mon cœur et ....', 1),
+(3, 'Compléter les paroles :\r\n\r\nLiberté, c\'est de me faire une couleur, d\'enfin écouter mon cœur ....', 1),
 (4, 'Pourquoi les bureaux sont toujours fermés à la poste ?', 2),
 (5, 'Comment  appelle-t-on la célèbre pizza montagnarde ?', 2),
 (6, 'Quel est le plus compliqué dans le métier de sauveteur ?', 2),
@@ -145,10 +145,10 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (13, 'Quelles sont les nouvelles règle de l\'épreuve des poteaux ?', 3),
 (14, 'Que mangent les députés de l\'Assemblée nationale le lundi midi ?', 3),
 (15, 'Compléter les paroles :\r\n\r\nRox et Rouky étaient amis pour la vie mais en fait ...', 1),
-(16, 'Compléter les paroles :\r\n\r\nLui c\'est Gaspard et moi c\'est Balthazar, on est pas ...', 1),
+(16, 'Compléter les paroles :\r\n\r\nLui c\'est Gaspard et moi c\'est Balthazar, on n\'est pas ...', 1),
 (17, 'Qui sont les rockstars du calendar ?', 1),
 (18, 'Compléter ces paroles :\r\n\r\nHey ! tu sais c\'est qui ...', 1),
-(19, 'Qui a volé les petits crayons de papier ?', 2),
+(19, 'Qui a volé les crayons de papier ?', 2),
 (20, 'Comment s\'écrit le fameux modèle d\'Ikeo ?', 2),
 (21, 'Quel est l\'aliment préféré de Yves Côtedeporc ?', 2),
 (22, 'Compléter les paroles :\r\n\r\nTon sourire de soleil n\'a pas son pareil comme ...', 1),
@@ -169,7 +169,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 
 DROP TABLE IF EXISTS `quizz`;
 CREATE TABLE IF NOT EXISTS `quizz` (
-  `Quizz_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Quizz_ID` int NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Theme` text NOT NULL,
   PRIMARY KEY (`Quizz_ID`)
