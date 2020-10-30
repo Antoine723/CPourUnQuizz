@@ -20,10 +20,13 @@
                     <a class="navigate" href="quizz.php">Quizz</a>
                     <a class="navigate" href="result.php">Résultat</a>
                     <a class="navigate" href="account.php">Profil</a>
-                    <a class="navigate" href="register.php">Register</a>
-                    <a class="navigate" href="logIn.php">Log in</a>
-                    <a class="navigate" href="" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
-                    
+                    <?php if(!isset($_SESSION['username'])){ ?>
+                        <a class="navigate" href="register.php">Register</a>
+                        <a class="navigate" href="login.php">Log in</a>
+                    <?php }
+                        else{?>
+                    <a class="navigate" href="logout.php" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
+                        <?php }?>
                 </div>
             </div>
         </header>

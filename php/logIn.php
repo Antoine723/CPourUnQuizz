@@ -4,13 +4,13 @@
 
 
 <html>
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/common.css">
     <?php include("header.php")?>
 
         <body>
             <div class="reg">
-                <form method="post" action="home.php?user=login">
+                <form method="post" action="index.php?user=login">
                     <div class="formular">
                         <label>Nom d'utilisateur</label>
                         <br>
