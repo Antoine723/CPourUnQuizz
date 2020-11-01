@@ -2,11 +2,10 @@
 <html lang="fr">
     <link rel="stylesheet" href="../css/result.css"/>
     <?php include("header.php");
-    $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
-    // ------------------------REQUETE BDD----------------------------------------------
-    $answers_table=$bdd->query('SELECT * FROM answers INNER JOIN questions ON answers.ID_extQuestions=questions.Question_ID WHERE questions.ID_extQuizz=2');//On va récupérer les infos avec les champs de la table answers+questions, pour le 1er quizz
-    $answers=$answers_table->fetchall();
-    //-----------------------------------------
+    include_once 'database.php';
+
+    $answers=getAllAnswersByIdQuizz(2);
+
 
     //-------------------FONCTIONS-----------------------------------------------------
     function remove_accents($tab) //On va ici gérer la casse (y compris pour l'apostrophe entre ’ et ')
@@ -71,7 +70,7 @@
         echo'
         <body>
             
-                <form action="quizz1.php">
+                <form action="quizz2.php">
                     <p>
                         <button type="submit">Réessayer</button>
                     </p>
