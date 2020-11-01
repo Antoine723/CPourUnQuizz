@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 21 oct. 2020 à 20:24
+-- Généré le : ven. 23 oct. 2020 à 17:20
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `ID_extQuestions` int NOT NULL,
   PRIMARY KEY (`Answers_ID`),
   KEY `ID_extQuestions` (`ID_extQuestions`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `answers`
 --
 
 INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
-(1, 'saucisse lentille', 14),
+(1, 'saucisse lentilles', 14),
 (2, 'et d\'épouser Aladin', 3),
 (3, 'G-Zel', 7),
 (4, 'Le PDC', 6),
@@ -71,14 +71,39 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`) VALUES
 (28, 'David Marsais', 9),
 (29, 'Jonathan Barré', 9),
 (30, 'C\'était en hiver', 10),
-(31, 'Aux alentours de 0 degrés Celsius', 10),
+(31, 'Aux alentours de 0 degré Celsius', 10),
 (32, 'Ils auraient mieux fait de porter des doudounes', 10),
 (33, 'Des petits clous rouillés avec le tétanos', 13),
-(34, 'Des fourmis rouge', 13),
+(34, 'Des fourmis rouges', 13),
 (35, 'Des petites braises', 13),
 (36, 'Denis', 17),
 (37, 'Serge', 17),
-(38, 'Lionel', 17);
+(38, 'Lionel', 17),
+(39, 'Master Plomberie', 31),
+(40, 'Master SNCF', 31),
+(41, 'Master Cabrel', 31),
+(42, 'Elle dispose d\'une isolation fougère remarquable', 32),
+(43, 'Check ça', 33),
+(44, 'Le Mortal Kombat', 34),
+(45, 'Menstruation', 35),
+(46, 'Immigration', 35),
+(47, 'Réparation', 35),
+(48, 'Promotion', 35),
+(49, 'Jean Bombeur', 36),
+(50, 'Fléchis, tu frappes, tu cours', 37),
+(51, 'La limonette', 38),
+(52, 'La chenille', 39),
+(53, 'Parce qu\'ils sont deux et parce qu\'ils sont à l\'intérieur', 40),
+(54, 'Monsieur Cocktail', 41),
+(55, 'Il faut réserver sur Booking.yes', 42),
+(56, 'ça fait des Ray-ban', 43),
+(57, 'Des millions de petites billes anti-pue de la gueule', 44),
+(58, 'Beaux-gosses', 45),
+(59, 'The phrase is a bit too long', 46),
+(60, 'On installe un monte escalier Stallah', 47),
+(61, 'Jaquie, Michel et Augustin', 48),
+(62, 'Des olives', 49),
+(63, 'Gogole home', 50);
 
 -- --------------------------------------------------------
 
@@ -123,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `ID_extQuizz` int NOT NULL,
   PRIMARY KEY (`Question_ID`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `questions`
@@ -159,7 +184,27 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (27, 'Quelle est la sauce piquante de gromino\'s pizza ?', 3),
 (28, 'Vous n\'aimez pas vos imperfections ? C\'est pas grave lui il a juste envie de ...', 2),
 (29, 'Quelle est la particularité de l\'eau Zorana ?', 3),
-(30, 'A combien passe le taux d\'alcoolémie dans le sang ?', 2);
+(30, 'A combien passe le taux d\'alcoolémie dans le sang ?', 2),
+(31, 'Avec le succès de son émission Masterchef, TF1 a décidé de la décliner en Master :', 4),
+(32, 'Quelle est la particularité de la première maison présenté par Stéphane Ibis ?', 4),
+(33, 'Quelle est la fameuse réplique de Marc Emanuel ?', 4),
+(34, 'Quel sport pratique Francky le grand frère ?', 4),
+(35, 'Quels sont les prochains chapitres de Twilight ?', 4),
+(36, 'Par qui est dirigé la BlagueCorp ?', 4),
+(37, 'Quel l\'enchainement proposé par Gym 8 pour tabasser les manifestants ?', 4),
+(38, 'Quelle est la boisson que propose Serge dans un dîner presque pas mal ?', 4),
+(39, 'Quelle est la chorée de l\'équipe de France lorsqu’ils marquent un but ?', 4),
+(40, 'Pourquoi l\'émission 200% inside\'s s\'appelle ainsi ?', 4),
+(41, 'La marque ayant pour slogan : \"Sans alcool la fête est plus folle\" s\'appelle ?', 5),
+(42, 'Comment peut-on se rendre sur l\'île où es femmes montrent leurs tchoutches ?', 5),
+(43, 'Que se passe-t-il si Alain Afflelou colle ses couilles sur nos yeux ?', 5),
+(44, 'Que contient le dentifrice aux agents actifs spécial blancheur fraîche ?', 5),
+(45, 'Cola-Cola light est la boisson des ?', 5),
+(46, 'Comment dit-on \"Cette phrase est un peu trop longue\" d\'après Wall Street England ?', 5),
+(47, 'Comment faire pour retrouver sa mobilité ?', 5),
+(48, 'Qui doit-on remercier pour la délicieuse crème fraîche ?', 5),
+(49, 'Pour un apéro bien réussi il vous faut ?', 5),
+(50, 'Quel est le nouveau assistant personnel ?', 5);
 
 -- --------------------------------------------------------
 
@@ -173,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `quizz` (
   `Name` text NOT NULL,
   `Theme` text NOT NULL,
   PRIMARY KEY (`Quizz_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `quizz`
@@ -182,7 +227,9 @@ CREATE TABLE IF NOT EXISTS `quizz` (
 INSERT INTO `quizz` (`Quizz_ID`, `Name`, `Theme`) VALUES
 (1, 'Quizz 1', 'Chansons'),
 (2, 'Quizz 2', 'Amateur'),
-(3, 'Quizz 3', 'Expert');
+(3, 'Quizz 3', 'Expert'),
+(4, 'Quizz 4', 'Parodie émissions TV'),
+(5, 'Quizz 5', 'Pub');
 
 --
 -- Contraintes pour les tables déchargées
