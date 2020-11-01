@@ -3,7 +3,9 @@
     <link rel="stylesheet" href="../css/result.css"/>
     <?php include("header.php");
     include_once 'database.php';
-    $answers=getAllAnswersByIdQuizz(1);
+
+    $answers=getAllAnswersByIdQuizz(4);
+
 
     //-------------------FONCTIONS-----------------------------------------------------
     function remove_accents($tab) //On va ici gérer la casse (y compris pour l'apostrophe entre ’ et ')
@@ -40,7 +42,6 @@
                 if($check) $score++;
             }
             else{
-                
                 for($index=0;$index<count($answers);$index++){ //On récupère la réponse correspondante à l'ID et on la stocke dans une variable avec laquelle on va comparer la réponse donnée par l'utilisateur
                     if($answers[$index]['ID_extQuestions']==$key) $answer=$answers[$index]['Answer'];
                 }
@@ -69,7 +70,7 @@
         echo'
         <body>
             
-                <form action="quizz1.php">
+                <form action="quizz4.php">
                     <p>
                         <button type="submit">Réessayer</button>
                     </p>

@@ -12,12 +12,12 @@
                         <h1>Informations de compte</h1>
                         <label>Nom d'utilisateur</label>
                         <br>
-                        <p>Mon_Nom_D'utilisateur</p>
+                        <p><?php echo($_SESSION['username'])?></p>
                         <input type="text" placeholder="Nouveau nom d'utilisateur" name="username">
                         <br>
                         <label>E-mail</label>
                         <br>
-                        <p>Mon_Email</p>
+                        <p><?php echo($_SESSION['mail'])?></p>
                         <input type="text" placeholder="Nouvel e-mail" name="e-mail">
                         <br>
                         <br>
