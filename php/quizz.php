@@ -12,20 +12,20 @@
         <div class="box"> 
             <div class="element">
                 <p>
-                    <a href="quizz1.php" class="button">Quizz Chansons</a>
-                    <a href="quizz5.php" class="button">Quizz Pub</a>
+                    <a href="index.php?page=quizz&id=1" class="button">Quizz Chansons</a>
+                    <a href="index.php?page=quizz&id=5" class="button">Quizz Pub</a>
                 </p>
             </div>
             <div class="element">
                 <p>
-                    <a href="quizz4.php" class="button">Quizz Parodie émission TV</a>
-                    <a href="quizz2.php" class="button">Quizz Amateur</a>
+                    <a href="index.php?page=quizz&id=4" class="button">Quizz Parodie émission TV</a>
+                    <a href="index.php?page=quizz&id=2" class="button">Quizz Amateur</a>
                 </p>
             </div>
             
             <div class="element">
                 <p>
-                    <a href="quizz3.php" class="button">Quizz Expert</a>
+                    <a href="index.php?page=quizz&id=3" class="button">Quizz Expert</a>
                 </p>
             </div>
         </div>
