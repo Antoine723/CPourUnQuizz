@@ -14,8 +14,9 @@ function executeQuery($query,$param){
     $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
     try{
         $answers=$bdd->prepare($query);
+        if(is_array($param)) $answers->execute($param);
         
-        $answers->execute(array($param));
+        else $answers->execute(array($param));
         
         $datas=$answers->fetchall();
         $answers->closeCursor();
@@ -27,4 +28,19 @@ function executeQuery($query,$param){
 
     }
 
+}
+
+function getUsernameAndPasswordAndMailByUserName($username){
+    $query='SELECT Username,Password,Mail FROM player WHERE player.Username=?';
+    return executeQuery($query,$username);
+}
+function getUsernameAndPasswordAndMailByMail($mail){
+    $query='SELECT Username,Password,Mail FROM player WHERE player.Mail=?';
+    return executeQuery($query,$mail);
+}
+
+function addUser($username,$password,$mail){
+    $query='INSERT INTO player(Username,Password,Mail) VALUES(?,?,?)';
+    $infos=array($username,$password,$mail);
+    return executeQuery($query,$infos);
 }

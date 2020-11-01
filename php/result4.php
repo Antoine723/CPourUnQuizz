@@ -4,7 +4,7 @@
     <?php include("header.php");
     include_once 'database.php';
 
-    $answers=getAllAnswersByIdQuizz(2);
+    $answers=getAllAnswersByIdQuizz(4);
 
 
     //-------------------FONCTIONS-----------------------------------------------------
@@ -70,7 +70,7 @@
         echo'
         <body>
             
-                <form action="quizz2.php">
+                <form action="quizz4.php">
                     <p>
                         <button type="submit">Réessayer</button>
                     </p>

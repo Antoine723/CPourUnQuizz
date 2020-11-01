@@ -12,18 +12,22 @@
 <body>
     <header>
             <div class="gauche">
-            <a href="home.php"><img src="../images/logop.png" height="200"></a>    
+            <a href="index.php?page=home"><img src="../images/logop.png" height="200"></a>    
             </div>
             <div class="droite">
                 <div class="titre" >CPourUnQuizz</div>
                 <div class="lien">
-                    <a class="navigate" href="quizz.php">Quizz</a>
-                    <a class="navigate" href="result.php">Résultat</a>
-                    <a class="navigate" href="account.php">Profil</a>
-                    <a class="navigate" href="register.php">Register</a>
-                    <a class="navigate" href="logIn.php">Log in</a>
-                    <a class="navigate" href="" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
                     
+                    <?php if(!isset($_SESSION['username'])){ ?>
+                        <a class="navigate" href="index.php?user=login">Log in</a>
+                        <a class="navigate" href="index.php?user=register">Register</a>
+                    <?php }
+                        else{?>
+                        <a class="navigate" href="index.php?page=quizz">Quizz</a>
+                        <a class="navigate" href="index.php?page=result">Résultat</a>
+                        <a class="navigate" href="index.php?user=account">Profil</a>
+                        <a class="navigate" href="index.php?user=logout" id="logout"><img src="https://img.icons8.com/ios/50/000000/exit.png" alt="Log out"/></a>
+                        <?php }?>
                 </div>
             </div>
         </header>
