@@ -30,9 +30,13 @@ function executeQuery($query,$param){
 
 }
 
-function getUsernameAndPasswordByUserName($username){
-    $query='SELECT Username,Password FROM player WHERE player.Username=?';
+function getUsernameAndPasswordAndMailByUserName($username){
+    $query='SELECT Username,Password,Mail FROM player WHERE player.Username=?';
     return executeQuery($query,$username);
+}
+function getUsernameAndPasswordAndMailByMail($mail){
+    $query='SELECT Username,Password,Mail FROM player WHERE player.Mail=?';
+    return executeQuery($query,$mail);
 }
 
 function addUser($username,$password,$mail){
