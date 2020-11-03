@@ -27,10 +27,8 @@
         if(isset($_SESSION['username'])) $page = (!empty($_GET['page'])) ? $_GET['page'] : 'home'; //Si une session est en cours et que l'utilisateur n'a pas cliqué sur une page, il est redirigé vers home (c'est pour rediriger l'utilisateur vers home dès la connexion si celle-ci s'est bien effectuée)
     }
     if (!isset($_SESSION['username']) && !isset($page)) $page = 'login'; //Si aucune session n'est en cours, par défaut, l'index dirigera sur login
-
-
-    (!empty($_GET['id']))? require(__DIR__."../php/$page".$_GET['id'].".php") : require(__DIR__."../php/$page.php"); //Cette ligne est pour les quizz, on a 5 quizz et dans l'URL, on va indiquer en plus de la page quizz, l'id du quizz à charger, ainsi, selon l'id du quizz, on affiche le quizz correspondant
     
+    require(__DIR__."../php/$page.php");
 
     ?>
     <!DOCTYPE html>
@@ -40,10 +38,7 @@
 
     <?php if (file_exists("css/".$page.".css")) { ?>
             <link rel="stylesheet" href="css/<?= htmlspecialchars($page)  ?>.css"/>
-            <?php } //Idem pour les CSS du quizz (ils utilisent tous le même CSS appelé quizz1 d'où l'ajout du 1 avant le ".css")
-            if(!empty($_GET['id'])){ ?>
-                    <link rel="stylesheet" href="css/<?= htmlspecialchars($page)?>1.css"/>
-        <?php }
+            <?php } 
             else{
                 switch($page){
                     case'login': //login et account utilisent pour l'instant le même CSS que register

@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../css/result.css"/>
     <?php include("header.php");
     include_once 'database.php';
-    $answers=getAllAnswersByIdQuizz(1);
+    $answers=getAllAnswersByIdQuizz($_GET['id']);
 
     //-------------------FONCTIONS-----------------------------------------------------
     function remove_accents($tab) //On va ici gérer la casse (y compris pour l'apostrophe entre ’ et ')
@@ -42,7 +42,8 @@
             else{
                 
                 for($index=0;$index<count($answers);$index++){ //On récupère la réponse correspondante à l'ID et on la stocke dans une variable avec laquelle on va comparer la réponse donnée par l'utilisateur
-                    if($answers[$index]['ID_extQuestions']==$key) $answer=$answers[$index]['Answer'];
+                    if($answers[$index]['ID_extQuestions']==$key){
+                    } 
                 }
                 if(strtolower(remove_accents($answer))==strtolower(remove_accents($ans))) $score++;
             }
@@ -52,42 +53,44 @@
     }
     //----------------------------------------------
 
-    $score=compute_score($answers);
-    //--------------------AFFICHAGE------------------------
-        echo'<div class="score">
+    $score=compute_score($answers);?>
+    <!-- --------------------AFFICHAGE------------------------ -->
+        <div class="score">
                 <div class="display_score">
-                    Votre score est de : '.$score;
-                    echo'
+                    Votre score est de : <?= $score?>
+                    
                 </div>
-                <div class="comment_score">';
-                    if(0<=$score && $score<=4) echo'</br> Aïe, tu n\'es pas un fin connaisseur';
-                    elseif(5<=$score && $score<=8) echo'</br> Ça va tu n\'es pas trop mauvais';
-                    else echo'</br> Ah voilà quelqu\'un qui est fan de notre duo !';
-                    echo'
+                <div class="comment_score">
+                    <?php
+                        if(0<=$score && $score<=4){?> </br> Aïe, tu n'es pas un fin connaisseur
+                        <?php }elseif(5<=$score && $score<=8){?> </br> Ça va tu n'es pas trop mauvais
+                        <?php }else { ?> </br> Ah voilà quelqu'un qui est fan de notre duo !
+                        <?php }?>
                 </div>
-            </div>';
-        echo'
+            </div>
+        
         <body>
             
-                <form action="quizz1.php">
-                    <p>
-                        <button type="submit">Réessayer</button>
-                    </p>
-                </form>
-                <form action="home.php">
-                    <p>
-                        <button type="submit">Retour à l\'accueil</button>
-                    </p>
-                </form>
-                <form action="quizz.php">
-                    <p>
-                        <button type="submit">Autres quizz</button>
-                    </p>
-                </form>
+            <form action="index.php?page=quizz&id=<?php echo($_GET['id'])?>" method="post">
+                <p>
+                    <input type="submit" value="Réessayer"></input>
+                </p>
+            </form>
+            <form action="index.php?page=home" method="post">
+                <p>
+                    <input type="submit" value="Retour à l'accueil"></input>
+                </p>
+            </form>
+            <form action="index.php?page=homequizz" method="post">
+                <p>
+                    <input type="submit" value="Autres quizz"></input>
+                </p>
+            </form>
             </div>
         </body>
 
-    <br>';
-    include("footer.php");
-    echo'
+    <br>
+    <?php
+    include("footer.php");?>
+    
 </html>';
