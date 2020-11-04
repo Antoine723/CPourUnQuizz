@@ -12,7 +12,7 @@
 <body>
     <header>
             <div class="gauche">
-            <a href="index.php?page=home"><img src="../images/logop.png" height="200"></a>    
+            <a href="index.php?page=home"><img src="images/logop.png" height="200"></a>    
             </div>
             <div class="droite">
                 <div class="titre" >CPourUnQuizz</div>
