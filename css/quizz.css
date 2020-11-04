@@ -5,6 +5,17 @@
 .titre_quizz{
     text-align: center;
 }
+.display_quizz{
+    background: url(../images/image-fond-quizz.jpg) no-repeat center fixed;
+    -webkit-background-size:cover ;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
 
 .questions_and_answers{
     /* background-color: green; */
