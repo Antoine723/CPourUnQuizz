@@ -55,6 +55,7 @@
 
     $score=compute_score($answers);?>
     <!-- --------------------AFFICHAGE------------------------ -->
+    <div class="display"> 
         <div class="score">
                 <div class="display_score">
                     Votre score est de : <?= $score?>
@@ -88,7 +89,7 @@
             </form>
             </div>
         </body>
-
+    </div>                        
     <br>
     <?php
     include("footer.php");?>
