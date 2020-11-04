@@ -20,6 +20,10 @@ header
     border-right: solid black;
 }
 
+#logout{
+    padding: 5px;
+}
+
 .droite{
     
     
@@ -51,6 +55,7 @@ header
     height: 1.8cm;
     color: white;
     font-size: 0.9cm;
+    
     
 }
 a#logout{

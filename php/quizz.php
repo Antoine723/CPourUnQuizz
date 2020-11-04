@@ -40,35 +40,37 @@
                             ?>
                             </br>
                             </br>
-                            <label for="Question"><b>Question <?= $j+1?> : <?php echo($questions[$j]['Content'])?></label> 
+                            <div class ="question"><label for="Question"><b>Question <?= $j+1?> : <?php echo($questions[$j]['Content'])?></label> </div>
                             </br>
                             </br>
                             <div class="reponse">
                                 <?php if(count($bad_answers)==0 && count($correct_answers)==1){?>
-                                <input type="text" name="<?php echo($id_quest)?>"></input>
+                                <input id="text" type="text" name="<?php echo($id_quest)?>"></input>
                                 <?php }
                                 else{
                                     if(count($correct_answers)>1){
                                         for($k=0;$k<count($answers_for_quest);$k++){?>
-                                            <input type="checkbox" name="<?php echo($id_quest)?>[]" value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></input>
+                                            <input id="checkbox" type="checkbox" name="<?php echo($id_quest)?>[]" value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></input>
                                             </br>
                                             <?php 
                                         }
                                     }
                                     else{
                                         if(!$islistMade){ ?>
+                                            <div class=scroll-field>
                                                 <select name="<?php echo($id_quest)?>">
                                                     <option value="" selected></option>
                                                     <?php for($k=0;$k<count($answers_for_quest);$k++){ ?>
                                                     <option value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></option>
                                                     <?php }?>
                                                 </select>
+                                            </div>
                                             <?php 
                                             $islistMade=true;
                                         }
                                         else{ 
                                             for($k=0;$k<count($answers_for_quest);$k++) {?>
-                                                <input type="radio" name=<?php echo($id_quest)?> value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></input>
+                                                <input id="radio" type="radio" name=<?php echo($id_quest)?> value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?>  </input>
                                                 </br>
                                                 <?php 
                                             }  
