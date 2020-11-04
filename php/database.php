@@ -45,6 +45,27 @@ function getUsernameAndPasswordAndMailByMail($mail){
 
 function addUser($username,$password,$mail){
     $query='INSERT INTO player(Username,Password,Mail) VALUES(?,?,?)';
-    $infos=array($username,$password,$mail);
+    $infos=array($username,password_hash($password,PASSWORD_DEFAULT),$mail);
+    return executeQuery($query,$infos);
+}
+
+function addScoreToUser($id_user,$id_quizz,$score)
+{
+    $query='INSERT INTO did(ID_extPlayer,ID_extQuizz,Score) VALUES(?,?,?)';
+    $infos=array($id_user,$id_quizz,$score);
+    return executeQuery($query,$infos);
+}
+
+function updateScore($id_user,$id_quizz,$updateScore)
+{
+    $query = 'UPDATE did SET Score =? WHERE ID_extPlayer = ? AND ID_extQuizz = ?';
+    $infos=array($updateScore,$id_user,$id_quizz);
+    return executeQuery($query,$infos);
+}
+
+function getScoreByIdPlayerAndIdQuizz($id_user,$id_quizz)
+{
+    $query='SELECT * FROM did WHERE did.ID_extPlayer=? AND did.ID_extQuizz=?';
+    $infos=array($id_user,$id_quizz);
     return executeQuery($query,$infos);
 }
