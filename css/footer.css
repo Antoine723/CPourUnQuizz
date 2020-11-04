@@ -1,13 +1,35 @@
-p
-{
-    text-align: center;
-    font-size: 15px;
+
+
+footer{
+    display: flex;
+    flex-direction: row ;
+    background:#ccc;
+    position:relative;
+    bottom:0;
+    width:100%;
+    margin-top:100px;
+    
+    
+    
+}
+.img_footer1{
+    height: 110px;
+    flex-basis: 5%;
+    
 }
 
-.display
-{
-    display:block;
-    margin:auto;
-    height:15%;
-    width:15%
+
+.text_footer{
+    flex-basis: 90%;
+
+    text-align: center;
+    font-size: 30px;
+    padding: 2mm;
+    font-weight: bold;
+}
+
+.img_footer2{
+    height: 110px;
+    flex-basis: 5%;
+    width: 100px;
 }
