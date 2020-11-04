@@ -1,0 +1,88 @@
+
+.box1{
+    display: flex;
+    justify-content: center;   
+    align-items: center; 
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.head{
+    display: flex;
+    justify-content: space-around;   
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.line1{
+    display: flex;
+    justify-content: space-around;   
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.line2{
+    display: flex;
+    justify-content: space-around;   
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.line3{
+    display: flex;
+    justify-content: space-around;   
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.line4{
+    display: flex;
+    justify-content: space-around;   
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+.line5{
+    display: flex;
+    justify-content: space-around;   
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.element:nth-child(1){
+    flex:1;
+}
+
+.element:nth-child(2){
+    flex:1;
+}
+
+.element:nth-child(3){
+    flex:1;
+}
+
+
+p{
+    text-align: center;
+}
+
+.title{
+    font-size: 23px;
+    color: rgb(44, 32, 95);
+}
+
+.pseudo{
+    font-size: 18px;
+    color:red;
+}
+
+.head_title{
+    font-weight: bold;
+}
