@@ -9,6 +9,10 @@ function getAllAnswersByIdQuizz($idQuizz){
     $query='SELECT * FROM answers INNER JOIN questions ON answers.ID_extQuestions=questions.Question_ID WHERE questions.ID_extQuizz=?';
     return executeQuery($query,$idQuizz);
 }
+function getAllGoodAnswersByIdQuizz($idQuizz){
+    $query='SELECT * FROM answers INNER JOIN questions ON answers.ID_extQuestions=questions.Question_ID WHERE questions.ID_extQuizz=? AND answers.is_correct_answer=1';
+    return executeQuery($query,$idQuizz);
+}
 
 function executeQuery($query,$param){
     $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
