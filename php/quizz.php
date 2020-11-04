@@ -44,21 +44,21 @@
                         </br>
                         <div class="reponse">
                             <?php if(count($bad_answers)==0 && count($correct_answers)==1){?>
-                            <input type="text" name=<?php $questions[$j]['Question_ID']?>></input>
+                            <input type="text" name="<?php echo($id_quest)?>"></input>
                             <?php }
                             else{
                                 if(count($correct_answers)>1){
                                     for($k=0;$k<count($answers_for_quest);$k++){?>
-                                        <input type="checkbox" name="<?php $id_quest?>[]" value=<?php $answers_for_quest[$k]['Answer']?>><?php echo($answers_for_quest[$k]['Answer']);?></input>
+                                        <input type="checkbox" name="<?php echo($id_quest)?>[]" value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></input>
                                         </br>
                                         <?php 
                                     }
                                 }
                                 else{
                                     if(!$islistMade){ ?>
-                                            <select name=<?php $id_quest?> id="Question <?php $j+1?>">
+                                            <select name="<?php echo($id_quest)?>">
                                                 <?php for($k=0;$k<count($answers_for_quest);$k++){ ?>
-                                                <option value=<?php $answers_for_quest[$k]['Answer']?>><?php echo($answers_for_quest[$k]['Answer']);?></option>
+                                                <option value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></option>
                                                 <?php }?>
                                             </select>
                                         <?php 
@@ -66,7 +66,7 @@
                                     }
                                     else{ 
                                         for($k=0;$k<count($answers_for_quest);$k++) {?>
-                                            <input type="radio" name=<?php $id_quest?> value=<?php $answers_for_quest[$k]['Answer']?>><?php echo($answers_for_quest[$k]['Answer']);?></input>
+                                            <input type="radio" name=<?php echo($id_quest)?> value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></input>
                                             </br>
                                             <?php 
                                         }  
