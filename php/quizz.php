@@ -57,6 +57,7 @@
                                 else{
                                     if(!$islistMade){ ?>
                                             <select name="<?php echo($id_quest)?>">
+                                                <option value="" selected></option>
                                                 <?php for($k=0;$k<count($answers_for_quest);$k++){ ?>
                                                 <option value="<?php echo($answers_for_quest[$k]['Answer'])?>"><?php echo($answers_for_quest[$k]['Answer']);?></option>
                                                 <?php }?>
