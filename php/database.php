@@ -15,7 +15,7 @@ function getAllGoodAnswersByIdQuizz($idQuizz){
 }
 
 function executeQuery($query,$param){
-    $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
+    global $bdd; //On utilise la variable globale bdd qui a été initialisée au début de l'index (variable qui se connecte à la bdd)
     try{
         $answers=$bdd->prepare($query);
         if(is_array($param)) $answers->execute($param);
