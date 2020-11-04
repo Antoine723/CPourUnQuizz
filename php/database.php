@@ -45,6 +45,6 @@ function getUsernameAndPasswordAndMailByMail($mail){
 
 function addUser($username,$password,$mail){
     $query='INSERT INTO player(Username,Password,Mail) VALUES(?,?,?)';
-    $infos=array($username,$password,$mail);
+    $infos=array($username,password_hash($password,PASSWORD_DEFAULT),$mail);
     return executeQuery($query,$infos);
 }
