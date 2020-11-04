@@ -27,12 +27,7 @@ header
     flex-direction: column;
     flex-basis: 70%;
     
-    
-    
 }
-
-
-
 .lien{
     
     display: flex;
@@ -52,7 +47,7 @@ header
     
     text-align: center;
     text-decoration: none;
-    flex-basis: 18%;
+    flex-basis: 40%;
     height: 1.8cm;
     color: white;
     font-size: 0.9cm;
