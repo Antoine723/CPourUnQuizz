@@ -34,8 +34,8 @@ function executeQuery($query,$param){
 
 }
 
-function getUsernameAndPasswordAndMailByUserName($username){
-    $query='SELECT Username,Password,Mail FROM player WHERE player.Username=?';
+function getAllByUserName($username){
+    $query='SELECT * FROM player WHERE player.Username=?';
     return executeQuery($query,$username);
 }
 function getUsernameAndPasswordAndMailByMail($mail){
