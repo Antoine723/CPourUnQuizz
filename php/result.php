@@ -4,6 +4,7 @@
     <?php include("header.php");
     include_once 'database.php';
     $good_answers=getAllGoodAnswersByIdQuizz($_GET['id']);
+    $associated_score = getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'],$_GET['id']);
 
     //-------------------FONCTIONS-----------------------------------------------------
     function remove_accents($tab) //On va ici gérer la casse (y compris pour l'apostrophe entre ’ et ')
@@ -52,7 +53,17 @@
     }
     //----------------------------------------------
 
-    $score=compute_score($good_answers);?>
+    $score=compute_score($good_answers);
+    if (count($associated_score) == 0)
+    {
+        addScoreToUser($_SESSION['user_id'],$_GET['id'],$score);
+    }
+    else
+    {
+        updateScore($_SESSION['user_id'],$_GET['id'],$score);
+    }
+    ?>
+
     <!-- --------------------AFFICHAGE------------------------ -->
     <div class="display"> 
         <div class="score">
