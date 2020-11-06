@@ -17,14 +17,6 @@
             20 rue des églantiers<br>
             59800 Lille
             </p> 
-        </div> 
-        <div class="third">
-            <p class="textthree">
-            Find us on social networks 
-            </p> 
-            <img src="images/fblogo.png" height="50"> 
-            <img src="images/snaplogo.png" height="50">
-            <img src="images/instalogo.png" height="50">  
-        </div> 
+        </div>
     </footer>
 </html>
