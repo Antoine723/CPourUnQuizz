@@ -5,21 +5,11 @@ footer{
     justify-content: space-around;
 }
 
-.first{
+.first, .second, .third{
     flex-basis: 33%;
 }
 
-.second{
-    flex-basis: 33%;
-}
-
-
-.textone{
-    text-align: center;
-    font-size: 15px;
-}
-
-.texttwo{
+.textone, .texttwo{
     text-align: center;
     font-size: 15px;
 }
