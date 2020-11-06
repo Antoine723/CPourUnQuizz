@@ -69,3 +69,34 @@ function getScoreByIdPlayerAndIdQuizz($id_user,$id_quizz)
     $infos=array($id_user,$id_quizz);
     return executeQuery($query,$infos);
 }
+
+function getThemeByIdQuizz($id_quizz)
+{
+    $query='SELECT Theme FROM quizz WHERE quizz.Quizz_ID=?';
+    return executeQuery($query,$id_quizz);
+}
+
+function getAllScoreAndPlayerNameByIdQuizz($id_quizz)
+{
+    $query='SELECT Score, Username FROM did
+    INNER JOIN player ON did.ID_extPlayer=player.Player_ID
+    INNER JOIN quizz ON quizz.Quizz_ID=did.ID_extQuizz
+    WHERE quizz.Quizz_ID=?';
+    return executeQuery($query,$id_quizz);
+}
+
+function getScoreByIdQuizzAndIdPlayer($id_quizz,$id_user)
+{
+    $query='SELECT did.Score, player.Username FROM did
+    INNER JOIN player ON did.ID_extPlayer=player.Player_ID
+    INNER JOIN quizz ON did.ID_extQuizz=quizz.Quizz_ID
+    WHERE quizz.Quizz_ID=? AND player.Player_ID=?';
+    $infos=array($id_quizz,$id_user);
+    return executeQuery($query,$infos);
+}
+
+function getThemeAndIdQuizzOfAllQuizz()
+{
+    $query='SELECT Theme, Quizz_ID FROM quizz';
+    return executeQuery($query,'');
+}

@@ -116,7 +116,7 @@
                             { 
                                 if(!is_array($_POST[$id_quest])) //Si ce n'est pas une checkbox
                                 {
-                                    if($good_answers[$i]['Answer'] ==$_POST[$id_quest]) //Si la réponse est bonne
+                                    if(strtolower(remove_accents($good_answers[$i]['Answer'])) == strtolower(remove_accents($_POST[$id_quest]))) //Si la réponse est bonne
                                     {?>
                                         <p class="good_ans"><?=$_POST[$id_quest]?></p>
                             <?php   }
@@ -133,7 +133,7 @@
                                 else //Si c'est une checkbox A MODIFIER
                                 {
                                    
-                                    if(in_array($good_answers[$i]['Answer'],$_POST[$id_quest])) //S'il a bien répondu
+                                    if(in_array(remove_accents($good_answers[$i]['Answer']),remove_accents($_POST[$id_quest]))) //S'il a bien répondu
                                     {
                                     ?>
                                         <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>

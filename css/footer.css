@@ -1,35 +1,40 @@
-
-
 footer{
     display: flex;
-    flex-direction: row ;
-    background:#ccc;
-    position:relative;
-    bottom:0;
-    width:100%;
-    margin-top:100px;
-    
-    
-    
-}
-.img_footer1{
-    height: 110px;
-    flex-basis: 5%;
-    
+    flex-direction: row;
+    height: 100;
 }
 
+.first{
+    flex-basis: 33%;
+}
 
-.text_footer{
-    flex-basis: 90%;
+.second{
+    flex-basis: 33%;
+}
 
+.third{
+    flex-basis: 33%;
+}
+
+.textone{
     text-align: center;
-    font-size: 30px;
-    padding: 2mm;
-    font-weight: bold;
+    font-size: 15px;
 }
 
-.img_footer2{
-    height: 110px;
-    flex-basis: 5%;
-    width: 100px;
+.texttwo{
+    text-align: center;
+    font-size: 15px;
+}
+
+.textthree{
+    text-align: center;
+    font-size: 15px;
+}
+
+hr {
+    width: 100% ;
+    border: none;
+    border-top: 3px double #333;
+    overflow: visible;
+    height: 5px;
 }
