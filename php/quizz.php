@@ -7,8 +7,7 @@
     
     $questions=getAllQuestionsByIdQuizz($_GET['id']);
     $answers=getAllAnswersByIdQuizz($_GET['id']);
-    // var_dump($questions);
-    // var_dump($answers);
+    $theme=getThemeByIdQuizz($_GET['id']);
     $islistMade=false;
     ?>
     
@@ -17,7 +16,7 @@
     <body>
         <div class=display_quizz>
             <div class="titre_quizz">
-                    <h1>Quizz n° <?php echo($_GET['id']);?> </h1>
+                    <h1>Quizz <?php echo($theme[0]['Theme']);?> </h1>
             </div>
             <form  action="index.php?page=result&id=<?php echo($_GET['id'])?>" method="post">
                 <div class="questions_and_answers">

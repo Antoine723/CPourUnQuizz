@@ -1,7 +1,7 @@
 <?php 
 $taille_min_mdp=8;
 if(isset($_POST['username_reg'])  and isset($_POST['password_reg']) and isset($_POST['password_conf']) and isset($_POST['mail'])){ //Si l'utilisateur a bien saisi des données dans chaque case (car elles sont toutes obligatoires), on va vérifier si le compte peut être créé
-    $user_by_username=getUsernameAndPasswordAndMailByUserName($_POST['username_reg']);
+    $user_by_username=getAllByUserName($_POST['username_reg']);
     $user_by_mail=getUsernameAndPasswordAndMailByMail($_POST['mail']);
     if(!empty($user_by_username)){
         $page="register"; //Permet de rediriger l'utilisateur vers la page actuelle (register) pour qu'il puisse s'inscrire correctement, on fait ça pour toutes les erreurs rencontrées

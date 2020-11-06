@@ -24,7 +24,7 @@
                     <?php }
                         else{?>
                         <a class="navigate" href="index.php?page=homequizz">Quizz</a>
-                        <a class="navigate" href="index.php?page=result">Résultat</a>
+                        <a class="navigate" href="index.php?page=leaderboard">Classement</a>
                         <a class="navigate" href="index.php?user=account">Profil</a>
                         <a class="navigate" href="index.php?user=logout" id="logout"><img height="60px" width= "75px" src="images/exit.png" alt="Log out"/></a>
                         <?php }?>

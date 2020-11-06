@@ -49,3 +49,23 @@ input {
     text-transform: uppercase;
     padding: 10px;
 }
+
+.good_ans{
+    color:green;
+}
+
+.answers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.bad_ans{
+    color:red;
+}
+
+.no_ans{
+    color:blue;
+    font-style: italic;
+}
