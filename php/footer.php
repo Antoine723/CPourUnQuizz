@@ -22,7 +22,9 @@
             <p class="textthree">
             Find us on social networks 
             </p> 
-            <img src="fblogo.png" height="50"> 
+            <img src="images/fblogo.png" height="50"> 
+            <img src="images/snaplogo.png" height="50">
+            <img src="images/instalogo.png" height="50">  
         </div> 
     </footer>
 </html>

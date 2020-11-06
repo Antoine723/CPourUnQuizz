@@ -1,7 +1,8 @@
 <?php
 
 
-    //Appel du fichier database.php pour pouvoir utiliser les fonctions d'interaction avec la BDD
+    //Initialisation variable connexion BDD +appel du fichier database.php pour pouvoir utiliser les fonctions d'interaction avec la BDD
+    $bdd=new PDO('mysql:host=localhost;dbname=cpourunquizz','root','');
     include_once 'php/database.php';
     session_start();
     require('php/checkUser.php'); //On teste si l'utilisateur a saisi des identifiants corrects
