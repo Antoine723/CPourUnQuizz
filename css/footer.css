@@ -2,31 +2,14 @@ footer{
     display: flex;
     flex-direction: row;
     height: 100;
+    justify-content: space-around;
 }
 
-.first{
+.first, .second, .third{
     flex-basis: 33%;
 }
 
-.second{
-    flex-basis: 33%;
-}
-
-.third{
-    flex-basis: 33%;
-}
-
-.textone{
-    text-align: center;
-    font-size: 15px;
-}
-
-.texttwo{
-    text-align: center;
-    font-size: 15px;
-}
-
-.textthree{
+.textone, .texttwo{
     text-align: center;
     font-size: 15px;
 }

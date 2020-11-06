@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <link rel="stylesheet" href="../css/result.css"/>
-    <?php include("header.php");
-    include_once 'database.php';
+    <?php
     $good_answers=getAllGoodAnswersByIdQuizz($_GET['id']);
     $associated_score = getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'],$_GET['id']);
     $questions=getAllQuestionsByIdQuizz($_GET['id']);
@@ -66,103 +63,96 @@
     ?>
 
     <!-- --------------------AFFICHAGE------------------------ -->
-    <body>
-        <div class="display"> 
-            <div class="score">
-                <div class="display_score">
-                    Votre score est de : <?= $score?>
-                    
-                </div>
-                <div class="comment_score">
-                    <?php
-                        if(0<=$score && $score<=4){?> </br> Aïe, tu n'es pas un fin connaisseur
-                        <?php }elseif(5<=$score && $score<=8){?> </br> Ça va tu n'es pas trop mauvais
-                        <?php }else { ?> </br> Ah voilà quelqu'un qui est fan de notre duo !
-                        <?php }?>
-                </div>
-            </div>
+<div class="display"> 
+    <div class="score">
+        <div class="display_score">
+            Votre score est de : <?= $score?>
             
-            <form action="index.php?page=quizz&id=<?php echo($_GET['id'])?>" method="post">
-                <p>
-                    <input type="submit" value="Réessayer"></input>
-                </p>
-            </form>
-            <form action="index.php?page=home" method="post">
-                <p>
-                    <input type="submit" value="Retour à l'accueil"></input>
-                </p>
-            </form>
-            <form action="index.php?page=homequizz" method="post">
-                <p>
-                    <input type="submit" value="Autres quizz"></input>
-                </p>
-            </form>
         </div>
-        <div class="answers">
-                <?php 
-                    for($j=0;$j<count($questions);$j++){ //On parcourt toutes les questions du quizz actuel  ?>
-                        </br>
-                        </br>
-                        <label for="Question"><b>Question <?= $j+1?> : <?php echo($questions[$j]['Content'])?></label> 
-                        </br>
-                        </br> 
-                        <?php
-                        $id_quest=$questions[$j]['Question_ID']; //On récupère l'id de la question actuelle
-                        for($i=0;$i<count($good_answers);$i++)
-                        { //On parcourt toutes les bonnes réponses des différentes questions du quizz actuel
-                            if($good_answers[$i]['Question_ID']==$id_quest)
+        <div class="comment_score">
+            <?php
+                if(0<=$score && $score<=4){?> </br> Aïe, tu n'es pas un fin connaisseur
+                <?php }elseif(5<=$score && $score<=8){?> </br> Ça va tu n'es pas trop mauvais
+                <?php }else { ?> </br> Ah voilà quelqu'un qui est fan de notre duo !
+                <?php }?>
+        </div>
+    </div>
+    
+    <form action="index.php?page=quizz&id=<?php echo($_GET['id'])?>" method="post">
+        <p>
+            <input type="submit" value="Réessayer"></input>
+        </p>
+    </form>
+    <form action="index.php?page=home" method="post">
+        <p>
+            <input type="submit" value="Retour à l'accueil"></input>
+        </p>
+    </form>
+    <form action="index.php?page=homequizz" method="post">
+        <p>
+            <input type="submit" value="Autres quizz"></input>
+        </p>
+    </form>
+</div>
+<div class="answers">
+        <?php 
+            for($j=0;$j<count($questions);$j++){ //On parcourt toutes les questions du quizz actuel  ?>
+                </br>
+                </br>
+                <label for="Question"><b>Question <?= $j+1?> : <?php echo($questions[$j]['Content'])?></label> 
+                </br>
+                </br> 
+                <?php
+                $id_quest=$questions[$j]['Question_ID']; //On récupère l'id de la question actuelle
+                for($i=0;$i<count($good_answers);$i++)
+                { //On parcourt toutes les bonnes réponses des différentes questions du quizz actuel
+                    if($good_answers[$i]['Question_ID']==$id_quest)
+                    {?>
+                    <?php if(isset($_POST[$id_quest]) && $_POST[$id_quest]!='') //Si l'utilisateur a répondu à la question actuelle
+                    { 
+                        if(!is_array($_POST[$id_quest])) //Si ce n'est pas une checkbox
+                        {
+                            if(strtolower(remove_accents($good_answers[$i]['Answer'])) == strtolower(remove_accents($_POST[$id_quest]))) //Si la réponse est bonne
                             {?>
-                            <?php if(isset($_POST[$id_quest]) && $_POST[$id_quest]!='') //Si l'utilisateur a répondu à la question actuelle
-                            { 
-                                if(!is_array($_POST[$id_quest])) //Si ce n'est pas une checkbox
-                                {
-                                    if(strtolower(remove_accents($good_answers[$i]['Answer'])) == strtolower(remove_accents($_POST[$id_quest]))) //Si la réponse est bonne
-                                    {?>
-                                        <p class="good_ans"><?=$_POST[$id_quest]?></p>
-                            <?php   }
-                                    else //Si réponse fausse
-                                    {
-                                        ?>
-                                        <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
-                                        <p class="bad_ans"><?=$_POST[$id_quest]?></p>
-                                    <?php
-                                    }
-                                
+                                <p class="good_ans"><?=$_POST[$id_quest]?></p>
+                    <?php   }
+                            else //Si réponse fausse
+                            {
                                 ?>
-                            <?php }
-                                else //Si c'est une checkbox A MODIFIER
-                                {
-                                   
-                                    if(in_array(remove_accents($good_answers[$i]['Answer']),remove_accents($_POST[$id_quest]))) //S'il a bien répondu
-                                    {
-                                    ?>
-                                        <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
-                                    <?php } else //Sinon
-                                    {
-                                    ?>
-                                        <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
-                                        <?php  for($k=0;$k<count($_POST[$id_quest]);$k++){
-
-                                        ?>
-                                        <p class="bad_ans"><?=$_POST[$id_quest][$k]?></p>
-                                        <?php }
-                                    }
-                                    
-                                }
-                            }
-                            else
-                            { ?>
                                 <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
-                                <p class="no_ans">Aucune réponse</p>
-                            <?php }
+                                <p class="bad_ans"><?=$_POST[$id_quest]?></p>
+                            <?php
                             }
+                        
+                        ?>
+                    <?php }
+                        else //Si c'est une checkbox A MODIFIER
+                        {
+                            
+                            if(in_array(remove_accents($good_answers[$i]['Answer']),remove_accents($_POST[$id_quest]))) //S'il a bien répondu
+                            {
+                            ?>
+                                <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
+                            <?php } else //Sinon
+                            {
+                            ?>
+                                <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
+                                <?php  for($k=0;$k<count($_POST[$id_quest]);$k++){
+
+                                ?>
+                                <p class="bad_ans"><?=$_POST[$id_quest][$k]?></p>
+                                <?php }
+                            }
+                            
                         }
                     }
-                        ?>
-            </div>        
-    </body>                
-    <br>
-    <?php
-    include("footer.php");?>
-    
-</html>;
+                    else
+                    { ?>
+                        <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
+                        <p class="no_ans">Aucune réponse</p>
+                    <?php }
+                    }
+                }
+            }
+            ?>
+</div>
