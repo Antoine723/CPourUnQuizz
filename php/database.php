@@ -95,7 +95,7 @@ function getScoreByIdQuizzAndIdPlayer($id_quizz,$id_user)
     return executeQuery($query,$infos);
 }
 
-function getThemeOfAllQuizz()
+function getThemeAndIdQuizzOfAllQuizz()
 {
     $query='SELECT Theme, Quizz_ID FROM quizz';
     return executeQuery($query,'');

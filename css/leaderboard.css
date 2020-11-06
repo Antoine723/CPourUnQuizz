@@ -23,12 +23,8 @@
     flex-wrap: wrap;
 }
 
-.my_score{
-    color:green;
-    font-weight: bold;
-}
 
-.record{
+.record, .my_score{
     font-weight: bold;
     font-size: 1.2em;
 
