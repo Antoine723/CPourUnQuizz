@@ -69,3 +69,9 @@ function getScoreByIdPlayerAndIdQuizz($id_user,$id_quizz)
     $infos=array($id_user,$id_quizz);
     return executeQuery($query,$infos);
 }
+
+function getThemeByIdQuizz($id_quizz)
+{
+    $query='SELECT Theme FROM quizz WHERE quizz.Quizz_ID=?';
+    return executeQuery($query,$id_quizz);
+}
