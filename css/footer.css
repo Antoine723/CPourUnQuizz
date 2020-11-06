@@ -13,9 +13,6 @@ footer{
     flex-basis: 33%;
 }
 
-.third{
-    flex-basis: 33%;
-}
 
 .textone{
     text-align: center;
@@ -23,11 +20,6 @@ footer{
 }
 
 .texttwo{
-    text-align: center;
-    font-size: 15px;
-}
-
-.textthree{
     text-align: center;
     font-size: 15px;
 }
