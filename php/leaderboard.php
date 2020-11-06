@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <?php include("header.php")?>
+    <?php include("header.php");
+    $all_themes=getThemeAndIdQuizzOfAllQuizz();
+    ?>
 
     <link rel="stylesheet" href="../css/leaderboard.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -23,25 +25,45 @@
                 </div>
 
             </div>
-
-            <div class="line1">
+            <?php
+            for($i=0;$i<count($all_themes);$i++)
+            { ?>
+            <div class="line">
                 
                 <div class="element">
-                    <p class="title">Quizz chansons</p>
+                    <p class="title">Quizz <?= $all_themes[$i]['Theme']?></p>
                 </div>
 
                 <div class="element">
-                    <p>Mon score</p>
+                    <?php if(count(getScoreByIdQuizzAndIdPlayer($all_themes[$i]['Quizz_ID'],$_SESSION['user_id']))>0) { ?>
+                        <p class="my_score"> <?=getScoreByIdQuizzAndIdPlayer($all_themes[$i]['Quizz_ID'],$_SESSION['user_id'])[0]['Score']?> </p>
+                        <?php } 
+                            else{ ?>
+                            <p class="no_one"?><?="Quizz non réalisé"?></p>
+                        <?php }
+                        ?> 
                 </div>
 
                 <div class="element">
-                    <p class="pseudo">Genius</p>
-                    <p>Son score</p>
+                    <?php if(!empty(getAllScoreAndPlayerNameByIdQuizz($all_themes[$i]['Quizz_ID']))) { 
+                        $max=max(getAllScoreAndPlayerNameByIdQuizz($all_themes[$i]['Quizz_ID'])) ?>
+                        <p class="pseudo"><?=ucfirst($max['Username'])?></p>
+                        <p class="record"><?=$max['Score']?></p>
+                    <?php } 
+                    
+                        else { ?>
+                            <p class="no_one">Ce quizz n'a été réalisé par personne</p>
+
+                    <?php } ?>
+                    
                 </div>
 
             </div>
 
-            <div class="line2">
+            <?php } ?>
+            
+
+            <!-- <div class="line2">
                 
                 <div class="element">
                     <p class="title">Quizz pub</p>
@@ -107,7 +129,7 @@
                     <p>Son score</p>
                 </div>
 
-            </div>
+            </div> -->
 
             
 

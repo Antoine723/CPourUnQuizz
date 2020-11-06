@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 02 nov. 2020 à 17:43
--- Version du serveur :  8.0.21
+-- Généré le : mer. 04 nov. 2020 à 12:59
+-- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `answers`;
 CREATE TABLE IF NOT EXISTS `answers` (
-  `Answers_ID` int NOT NULL AUTO_INCREMENT,
+  `Answers_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Answer` text NOT NULL,
-  `ID_extQuestions` int NOT NULL,
+  `ID_extQuestions` int(11) NOT NULL,
   `is_correct_answer` tinyint(1) NOT NULL,
   PRIMARY KEY (`Answers_ID`),
   KEY `ID_extQuestions` (`ID_extQuestions`)
@@ -189,9 +189,9 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`, `is_correct_an
 
 DROP TABLE IF EXISTS `did`;
 CREATE TABLE IF NOT EXISTS `did` (
-  `ID_extPlayer` int NOT NULL,
-  `ID_extQuizz` int NOT NULL,
-  `Score` int NOT NULL,
+  `ID_extPlayer` int(11) NOT NULL,
+  `ID_extQuizz` int(11) NOT NULL,
+  `Score` int(11) NOT NULL,
   PRIMARY KEY (`ID_extPlayer`,`ID_extQuizz`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -204,22 +204,19 @@ CREATE TABLE IF NOT EXISTS `did` (
 
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
-  `Player_ID` int NOT NULL AUTO_INCREMENT,
+  `Player_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Username` text NOT NULL,
   `Password` text NOT NULL,
   `Mail` text NOT NULL,
   PRIMARY KEY (`Player_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `player`
 --
 
 INSERT INTO `player` (`Player_ID`, `Username`, `Password`, `Mail`) VALUES
-(1, 'test', '123', ''),
-(2, 'test2', '111', ''),
-(6, 'tttt', '1111', ''),
-(7, 'zefezf', '11111111', 'fezfe');
+(14, 'david', '$2y$10$5e2to9nB2ex6d77X0dLAzOupH5vF6cZHRij1yFwNEgcGATqBkKBym', 'david@marsais.com');
 
 -- --------------------------------------------------------
 
@@ -229,9 +226,9 @@ INSERT INTO `player` (`Player_ID`, `Username`, `Password`, `Mail`) VALUES
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
-  `Question_ID` int NOT NULL AUTO_INCREMENT,
+  `Question_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Content` text NOT NULL,
-  `ID_extQuizz` int NOT NULL,
+  `ID_extQuizz` int(11) NOT NULL,
   PRIMARY KEY (`Question_ID`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
@@ -245,7 +242,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (2, 'Quelle est la fameuse comptine de notre enfance ?', 1),
 (3, 'Compléter les paroles :\r\n\r\nLiberté, c\'est de me faire une couleur, d\'enfin écouter mon cœur ....', 1),
 (4, 'Pourquoi les bureaux sont toujours fermés à la poste ?', 2),
-(5, 'Comment  appelle-t-on la célèbre pizza montagnarde ?', 2),
+(5, 'Comment appelle-t-on la célèbre pizza montagnarde ?', 2),
 (6, 'Quel est le plus compliqué dans le métier de sauveteur ?', 2),
 (7, 'Quelle est la célèbre marque de vêtement de Sydney et Enzo ?', 2),
 (8, 'Quelle est la nouvelle comédie familiale de l\'année ?', 3),
@@ -256,7 +253,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (13, 'Quelles sont les nouvelles règles de l\'épreuve des poteaux ?', 3),
 (14, 'Que mangent les députés de l\'Assemblée nationale le lundi midi ?', 3),
 (15, 'Compléter les paroles :\r\n\r\nRox et Rouky étaient amis pour la vie mais en fait ...', 1),
-(16, 'Compléter les paroles :\r\n\r\nLui c\'est Gaspard et moi c\'est Balthazar, on n\'est pas ...', 1),
+(16, 'Compléter les paroles :\r\n\r\nLui c\'est Gaspard et moi c\'est Balthazar, on est pas ...', 1),
 (17, 'Qui sont les rockstars du calendar ?', 1),
 (18, 'Compléter ces paroles :\r\n\r\nHey ! tu sais c\'est qui ...', 1),
 (19, 'Qui a volé les crayons de papier ?', 2),
@@ -277,7 +274,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (34, 'Quel sport pratique Francky le grand frère ?', 4),
 (35, 'Quels sont les prochains chapitres de Twilight ?', 4),
 (36, 'Par qui est dirigé la BlagueCorp ?', 4),
-(37, 'Quel l\'enchainement proposé par Gym 8 pour tabasser les manifestants ?', 4),
+(37, 'Quel est l\'enchainement proposé par Gym 8 pour tabasser les manifestants ?', 4),
 (38, 'Quelle est la boisson que propose Serge dans un dîner presque pas mal ?', 4),
 (39, 'Quelle est la chorée de l\'équipe de France lorsqu’ils marquent un but ?', 4),
 (40, 'Pourquoi l\'émission 200% inside\'s s\'appelle ainsi ?', 4),
@@ -290,7 +287,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 (47, 'Comment faire pour retrouver sa mobilité ?', 5),
 (48, 'Qui doit-on remercier pour la délicieuse crème fraîche ?', 5),
 (49, 'Pour un apéro bien réussi il vous faut ?', 5),
-(50, 'Quel est le nouveau assistant personnel ?', 5);
+(50, 'Quel est le nouvel assistant personnel ?', 5);
 
 -- --------------------------------------------------------
 
@@ -300,7 +297,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 
 DROP TABLE IF EXISTS `quizz`;
 CREATE TABLE IF NOT EXISTS `quizz` (
-  `Quizz_ID` int NOT NULL AUTO_INCREMENT,
+  `Quizz_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Theme` text NOT NULL,
   PRIMARY KEY (`Quizz_ID`)
