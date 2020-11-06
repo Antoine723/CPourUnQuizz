@@ -1,12 +1,8 @@
-
-
 .titre_quizz{
     text-align: center;
     font-size: 30px;
 }
 .display_quizz{
-    background: url(../images/image-fond-quizz.png) no-repeat center fixed;
-    -webkit-background-size:cover ;
     margin-left: 200px;
     margin-right: 200px;
     padding-right: 200px;
@@ -18,19 +14,17 @@
 }
 
 input#radio{
-    margin-left: 75px;
+    margin-left: 35%;
 }
 input#text{
-    margin-left: 75px;
+    margin-left: 35%;
 }
 input#checkbox{
-    margin-left: 75px;
+    margin-left: 35%;
 }
 .scroll-field{
-    margin-left: 75px;
+    margin-left: 35%;
 }
-
-
 
 .questions_and_answers{
     /* background-color: green; */
@@ -53,13 +47,21 @@ button{
     width: 100px;
     margin-top: 50px;
     margin-left: 25px;
+    margin-right: 70px;
 
+}
+
+button:hover{
+    cursor:pointer;
 }
 .question{
     font-size: 20px;
+    text-align: center;
 }
 
-
-
+.buttons{
+    display: flex;
+    justify-content: center;
+}
 
 
