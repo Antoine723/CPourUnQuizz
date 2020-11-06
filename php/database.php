@@ -76,11 +76,11 @@ function getThemeByIdQuizz($id_quizz)
     return executeQuery($query,$id_quizz);
 }
 
-function getRecordAndPlayerNameAssociatedByIdQuizz($id_quizz)
+function getAllScoreAndPlayerNameByIdQuizz($id_quizz)
 {
-    $query='SELECT MAX(did.Score), player.Username FROM did
+    $query='SELECT Score, Username FROM did
     INNER JOIN player ON did.ID_extPlayer=player.Player_ID
-    INNER JOIN quizz ON did.ID_extQuizz=quizz.Quizz_ID
+    INNER JOIN quizz ON quizz.Quizz_ID=did.ID_extQuizz
     WHERE quizz.Quizz_ID=?';
     return executeQuery($query,$id_quizz);
 }

@@ -2,7 +2,6 @@
 <html lang="fr">
     <?php include("header.php");
     $all_themes=getThemeOfAllQuizz();
-    // var_dump(getRecordAndPlayerNameAssociatedByIdQuizz(1));
     ?>
 
     <link rel="stylesheet" href="../css/leaderboard.css">
@@ -46,9 +45,10 @@
                 </div>
 
                 <div class="element">
-                    <?php if(getRecordAndPlayerNameAssociatedByIdQuizz($all_themes[$i]['Quizz_ID'])[0]['MAX(did.Score)']!=null ) { ?>
-                        <p class="pseudo"><?= ucfirst(getRecordAndPlayerNameAssociatedByIdQuizz($all_themes[$i]['Quizz_ID'])[0]['Username'])?></p>
-                        <p class="record"><?=getRecordAndPlayerNameAssociatedByIdQuizz($all_themes[$i]['Quizz_ID'])[0]['MAX(did.Score)']?></p>
+                    <?php if(!empty(getAllScoreAndPlayerNameByIdQuizz($all_themes[$i]['Quizz_ID']))) { 
+                        $max=max(getAllScoreAndPlayerNameByIdQuizz($all_themes[$i]['Quizz_ID'])) ?>
+                        <p class="pseudo"><?=ucfirst($max['Username'])?></p>
+                        <p class="record"><?=$max['Score']?></p>
                     <?php } 
                     
                         else { ?>
