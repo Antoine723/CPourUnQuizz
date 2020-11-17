@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <div class="reg">
     <div class="infos_compte">
         <form method="post" action="account.php">
