@@ -38,6 +38,11 @@ function getAllByUserName($username){
     $query='SELECT * FROM player WHERE player.Username=?';
     return executeQuery($query,$username);
 }
+function getAllByUserId($id_user){
+    $query='SELECT * FROM player WHERE player.Player_ID=?';
+    return executeQuery($query,$id_user);
+}
+
 function getUsernameAndPasswordAndMailByMail($mail){
     $query='SELECT Username,Password,Mail FROM player WHERE player.Mail=?';
     return executeQuery($query,$mail);
