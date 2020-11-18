@@ -39,8 +39,7 @@
         <link rel="stylesheet" href="css/header.css"/>
         <link rel="stylesheet" href="css/footer.css"/>
         <link rel="stylesheet" href="css/common.css"/>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= ucfirst($page) ?></title>
         <?php
         if (file_exists("css/".$page.".css")) { ?>
