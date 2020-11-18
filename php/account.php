@@ -1,4 +1,5 @@
 <?php
+    $no_modif=false;
     $user_infos=getAllByUserId($_SESSION['user_id']);
     if (isset($_GET["modif"]) && $_GET["modif"] == true)
     {
@@ -55,9 +56,13 @@
                 $mailError = "L'adresse mail est déjà utilisée";
             }
         }
-        if( !isPossibleToUpdatePassword($old_password_size, $new_password_size, $conf_new_password_size) && $old_password_size>0 || $new_password_size>0 || $conf_new_password_size>0 ) 
+
+        if( !isPossibleToUpdatePassword($old_password_size, $new_password_size, $conf_new_password_size) && ($old_password_size>0 || $new_password_size>0 || $conf_new_password_size>0) ) 
         {
             $passwordError = "Veuillez remplir tous les champs nécessaires à la modification du mot de passe pour pouvoir le modifier";
+        }
+        else{
+            $no_modif=true;
         }
     }
 
@@ -66,24 +71,22 @@
         if($old_password_size>0) array_push($password_size_array,$old_password_size);
         if($new_password_size>0) array_push($password_size_array,$new_password_size);
         if($conf_new_password_size>0) array_push($password_size_array,$conf_new_password_size);
-
         if(count($password_size_array)==3) return true;
         else return false;
     }
 ?>
-
 <div class="reg">
     <div class="infos_compte">
         <form method="post" action="index.php?user=account&modif=true">
             <h1>Informations de compte</h1>
             <label>Nom d'utilisateur</label>
             <br>
-            <p><?php echo($user_infos[0]['Username'])?></p>
+            <p><?php echo(getAllByUserId($_SESSION['user_id'])[0]['Username'])?></p>
             <input type="text" placeholder="Nouveau nom d'utilisateur" name="username">
             <br>
             <label>E-mail</label>
             <br>
-            <p><?php echo($user_infos[0]['Mail'])?></p>
+            <p><?php echo(getAllByUserId($_SESSION['user_id'])[0]['Mail'])?></p>
             <input type="text" placeholder="Nouvel e-mail" name="e-mail">
             <br>
             <br>
@@ -134,12 +137,20 @@
         }
         else
         {
-            if (isset($_GET["modif"]) && $_GET["modif"] == true)
+            if (isset($_GET["modif"]) && $_GET["modif"] == true &&!$no_modif)
             {
                  ?>
             <div class = "success">
                 <?= "Votre modification a bien été prise en compte"?>
             </div>
+            <?php
+            }
+            if(isset($_GET["modif"]) && $_GET["modif"] == true && $no_modif)
+            {
+                ?>
+                 <div class = "err">
+                    <?= "Vous n'avez rien modifié"?>
+                </div>
             <?php
             }
 
