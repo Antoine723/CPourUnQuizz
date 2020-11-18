@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Europe/Paris');
     $good_answers=getAllGoodAnswersByIdQuizz($_GET['id']);
     $associated_score = getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'],$_GET['id']);
     $questions=getAllQuestionsByIdQuizz($_GET['id']);
@@ -126,7 +127,7 @@
                             else //Si réponse fausse
                             {
                                 ?>
-                                <p class="good_ans"><?=ucfirst($good_answers[$i]['Answer'])?></p>
+                                <p class="good_ans"><?=ucfirst($good_answers[0]['Answer'])?></p>
                                 <p class="bad_ans"><?=$_POST[$id_quest]?></p>
                             <?php
                             }
@@ -179,26 +180,6 @@
                                 </div>
                                 <?php
                             }
-                            
-                            
-                                
-                            
-                                /*if(in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($_POST[$id_quest]))) //S'il a bien répondu
-                                {
-                                ?>
-                                    <p class="good_ans"><?=ucfirst($good_answers_for_a_question[$i])?></p>
-                                <?php } 
-                                else //Sinon
-                                {
-                                ?>
-                                    <p class="good_ans"><?=ucfirst($good_answers_for_a_question[$i])?></p>
-                                    <?php  for($k=0;$k<count($_POST[$id_quest]);$k++){
-    
-                                    ?>
-                                    <p class="bad_ans"><?=$_POST[$id_quest][$k]?></p>
-                                    <?php }
-                                }*/
-                            
                             ?>
                             </div>
                             <?php
@@ -217,8 +198,10 @@
                         } ?>
                         <p class="no_ans">Aucune réponse</p>
                     <?php }
-                    
-                
+                    if(isset($_POST[$id_quest]))
+                    {
+                    addAllAnswerByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id']);
+                    }
             }
             ?>
 </div>
