@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <div class="gauche">
     <a href="index.php?page=home"><img src="images/logop.png" height="200"></a>    
 </div>

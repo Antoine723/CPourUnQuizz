@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <div class="reg">
     <form method="post" action="index.php">
         <div class="formular">

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <div class="first">
     <p class="textone"> 
         ©CPourUnQuizz<br>                                 
