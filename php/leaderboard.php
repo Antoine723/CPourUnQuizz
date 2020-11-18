@@ -28,8 +28,8 @@ $all_themes=getThemeAndIdQuizzOfAllQuizz();
         </div>
 
         <div class="element">
-            <?php if(count(getScoreByIdQuizzAndIdPlayer($all_themes[$i]['Quizz_ID'],$_SESSION['user_id']))>0) { ?>
-                <p class="my_score"> <?=getScoreByIdQuizzAndIdPlayer($all_themes[$i]['Quizz_ID'],$_SESSION['user_id'])[0]['Score']?> </p>
+            <?php if(count(getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'],$all_themes[$i]['Quizz_ID']))>0) { ?>
+                <p class="my_score"> <?=getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'],$all_themes[$i]['Quizz_ID'])[0]['Score']?> </p>
                 <?php } 
                     else{ ?>
                     <p class="no_one"?><?="Quizz non réalisé"?></p>
