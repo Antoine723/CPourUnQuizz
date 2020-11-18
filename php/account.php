@@ -1,7 +1,7 @@
 <?php
-    if ($_GET["modif"] == true)
+    if (isset($_GET["modif"]) && $_GET["modif"] == true)
     {
-        if(len($_POST["username"]) > 0)
+        if(strlen($_POST["username"]) > 0)
         {
             if(empty(getAllByUserName($_POST["username"]))) 
             {
@@ -13,9 +13,9 @@
             }   
         }
 
-        if(len($_POST["password"]) > 0)
+        if(strlen($_POST["password"]) > 0)
         {
-            if(len($_POST["password"]) >= 8)
+            if(strlen($_POST["password"]) >= 8)
             {
                 changePasswordbyIDUser($_POST["password"],$_SESSION["user_id"]);
             }
@@ -25,11 +25,11 @@
             }
         }
 
-        if(len($_POST["e-mail"]) > 0)
+        if(strlen($_POST["e-mail"]) > 0)
         {
             if(empty(getUsernameAndPasswordAndMailByMail($_POST["e-mail"],$_SESSION["user_id"])))
             {
-                if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)
+                if(filter_var($_POST['e-mail'], FILTER_VALIDATE_EMAIL))
                 {
                     changeMailbyIDUser($_POST["e-mail"], $_SESSION["user_id"]);
                 }
@@ -108,11 +108,15 @@
         }
         else
         {
-            ?>
+            if (isset($_GET["modif"]) && $_GET["modif"] == true)
+            {
+                 ?>
             <div class = "success">
                 <?= "Votre modification a bien été prise en compte"?>
             </div>
             <?php
+            }
+
         }
     ?>
 </div>

@@ -119,6 +119,6 @@ function changeUsernamebyIDUser($username,$id_user)
 function changeMailbyIDUser($mail,$id_user)
 {
     $query = 'UPDATE player SET Mail = ? WHERE player.Player_ID = ? ';
-    $infos=array($password,$id_user);
+    $infos=array($mail,$id_user);
     return executeQuery($query,$infos);
 }
