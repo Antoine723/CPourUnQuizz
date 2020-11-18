@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <div class="reg">
     <div class="infos_compte">
-        <form method="post" action="account.php">
+        <form method="post" action="index.php?user=account&modif=true">
             <h1>Informations de compte</h1>
             <label>Nom d'utilisateur</label>
             <br>
