@@ -23,3 +23,39 @@
         </p>
     </div>
 </div>
+<!-- on crée des boutons si le quizzid correspond a celui qui a été fait par l'utilisateur(vérifier argument fonction)  -->
+<div class="box"> 
+    <div class="element">
+        <p><?php
+        
+            if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],1))){?>
+    
+                <a href="index.php?page=result&id=1&done=true" class="button">Résultat quizz Chansons</a><?php
+
+            }
+            if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],5))){?>
+                <a href="index.php?page=result&id=5&done=true" class="button">Résultat quizz Pub</a><?php
+            }?>
+        </p>
+    </div>
+    <div class="element">
+        <p><?php
+            if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],4))){?>
+            <a href="index.php?page=result&id=4&done=true" class="button">Résultat quizz Parodie émission TV</a><?php
+            }
+            if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],2))){?>
+            <a href="index.php?page=result&id=2&done=true" class="button">Résultat quizz Amateur</a><?php
+            }?>
+        </p>
+    </div>
+    
+    <div class="element">
+        <p><?php
+            if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],3))){?>
+            <a href="index.php?page=result&id=3&done=true" class="button">Résultat quizz Expert</a><?php
+            }?>
+        </p>
+    </div>
+</div>
+
+
