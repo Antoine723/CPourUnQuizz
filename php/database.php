@@ -127,3 +127,12 @@ function changeMailbyIDUser($mail,$id_user)
     $infos=array($mail,$id_user);
     return executeQuery($query,$infos);
 }
+
+function getAllAnswersByIdPlayer($id_result, $answer, $date, $id_user, $id_quizz){
+    $query = 'SELECT * FROM result
+    INNER JOIN player ON result.ID_extPLayer=player.Player_ID
+    INNER JOIN quizz ON result.ID_extQuizz=quizz.Quizz_ID
+    WHERE player.Player_ID=? AND quizz.Quizz_ID=?'
+    $infos=array($id_result, $answer, $date, $id_user, $id_quizz);
+    return executeQuery($query,$infos);
+}
