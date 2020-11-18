@@ -1,3 +1,51 @@
+<?php
+    if ($_GET["modif"] == true)
+    {
+        if(len($_POST["username"]) > 0)
+        {
+            if(empty(getAllByUserName($_POST["username"]))) 
+            {
+                changeUsernamebyIDUser($_POST["username"],$_SESSION["user_id"]);
+            }
+            else
+            {
+                $userNameError = "Ce nom d'utilisateur est déjà utilisé";
+            }   
+        }
+
+        if(len($_POST["password"]) > 0)
+        {
+            if(len($_POST["password"]) >= 8)
+            {
+                changePasswordbyIDUser($_POST["password"],$_SESSION["user_id"]);
+            }
+            else
+            {
+                $passwordError = "Le mot de passe doit contenir au moins 8 caractères";
+            }
+        }
+
+        if(len($_POST["e-mail"]) > 0)
+        {
+            if(empty(getUsernameAndPasswordAndMailByMail($_POST["e-mail"],$_SESSION["user_id"])))
+            {
+                if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)
+                {
+                    changeMailbyIDUser($_POST["e-mail"], $_SESSION["user_id"]);
+                }
+                else
+                {
+                    $mailError = "L'adresse mail n'est pas au bon format";
+                }
+            }
+            else
+            {
+                $mailError = "L'adresse mail est déjà utilisée";
+            }
+        }
+    }
+?>
+
 <div class="reg">
     <div class="infos_compte">
         <form method="post" action="index.php?user=account&modif=true">
@@ -31,4 +79,40 @@
         </form>
     </div>
 
+</div>
+<div>
+    <?php
+        if(isset($userNameError))
+        {
+            ?>
+            <div class = "err">
+                <?= $userNameError?>
+            </div>
+            <?php
+        }
+        else if (isset($passwordError))
+        {
+            ?>
+            <div class = "err">
+                <?= $passwordError?>
+            </div>
+            <?php
+        }
+        else if (isset($mailError))
+        {
+            ?>
+            <div class = "err">
+                <?= $mailError?>
+            </div>
+            <?php
+        }
+        else
+        {
+            ?>
+            <div class = "success">
+                <?= "Votre modification a bien été prise en compte"?>
+            </div>
+            <?php
+        }
+    ?>
 </div>

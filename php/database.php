@@ -100,3 +100,25 @@ function getThemeAndIdQuizzOfAllQuizz()
     $query='SELECT Theme, Quizz_ID FROM quizz';
     return executeQuery($query,'');
 }
+
+function changePasswordbyIDUser($password,$id_user)
+{
+    $query = 'UPDATE player SET Password = ? WHERE player.Player_ID = ? ';
+    $infos=array($password,$id_user);
+    return executeQuery($query,$infos);
+}
+
+function changeUsernamebyIDUser($username,$id_user)
+{
+    $query = 'UPDATE player SET Username = ? WHERE player.Player_ID = ? ';
+    $infos=array($username,$id_user);
+    return executeQuery($query,$infos);
+}
+
+
+function changeMailbyIDUser($mail,$id_user)
+{
+    $query = 'UPDATE player SET Mail = ? WHERE player.Player_ID = ? ';
+    $infos=array($password,$id_user);
+    return executeQuery($query,$infos);
+}
