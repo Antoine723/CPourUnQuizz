@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 18 nov. 2020 à 13:46
--- Version du serveur :  5.7.31
+-- Généré le : mer. 18 nov. 2020 à 22:54
+-- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `answers`;
 CREATE TABLE IF NOT EXISTS `answers` (
-  `Answers_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Answers_ID` int NOT NULL AUTO_INCREMENT,
   `Answer` text NOT NULL,
-  `ID_extQuestions` int(11) NOT NULL,
+  `ID_extQuestions` int NOT NULL,
   `is_correct_answer` tinyint(1) NOT NULL,
   PRIMARY KEY (`Answers_ID`),
   KEY `ID_extQuestions` (`ID_extQuestions`)
@@ -189,12 +189,19 @@ INSERT INTO `answers` (`Answers_ID`, `Answer`, `ID_extQuestions`, `is_correct_an
 
 DROP TABLE IF EXISTS `did`;
 CREATE TABLE IF NOT EXISTS `did` (
-  `ID_extPlayer` int(11) NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
+  `ID_extPlayer` int NOT NULL,
+  `ID_extQuizz` int NOT NULL,
+  `Score` int NOT NULL,
   PRIMARY KEY (`ID_extPlayer`,`ID_extQuizz`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `did`
+--
+
+INSERT INTO `did` (`ID_extPlayer`, `ID_extQuizz`, `Score`) VALUES
+(16, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -204,12 +211,12 @@ CREATE TABLE IF NOT EXISTS `did` (
 
 DROP TABLE IF EXISTS `player`;
 CREATE TABLE IF NOT EXISTS `player` (
-  `Player_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Player_ID` int NOT NULL AUTO_INCREMENT,
   `Username` text NOT NULL,
   `Password` text NOT NULL,
   `Mail` text NOT NULL,
   PRIMARY KEY (`Player_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `player`
@@ -217,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `player` (
 
 INSERT INTO `player` (`Player_ID`, `Username`, `Password`, `Mail`) VALUES
 (14, 'david', '$2y$10$5e2to9nB2ex6d77X0dLAzOupH5vF6cZHRij1yFwNEgcGATqBkKBym', 'david@marsais.com'),
-(15, 'test2', '88888888', 'sample@gmail.com');
+(16, 'test', '$2y$10$A5p3I.zNj5fY9pRjNhkxT.cxkhSakSXz9hfoqu3h4d42/sNP.afvi', 'test@te.fr');
 
 -- --------------------------------------------------------
 
@@ -227,9 +234,9 @@ INSERT INTO `player` (`Player_ID`, `Username`, `Password`, `Mail`) VALUES
 
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
-  `Question_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Question_ID` int NOT NULL AUTO_INCREMENT,
   `Content` text NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
+  `ID_extQuizz` int NOT NULL,
   PRIMARY KEY (`Question_ID`),
   KEY `ID_extQuizz` (`ID_extQuizz`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
@@ -298,7 +305,7 @@ INSERT INTO `questions` (`Question_ID`, `Content`, `ID_extQuizz`) VALUES
 
 DROP TABLE IF EXISTS `quizz`;
 CREATE TABLE IF NOT EXISTS `quizz` (
-  `Quizz_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Quizz_ID` int NOT NULL AUTO_INCREMENT,
   `Name` text NOT NULL,
   `Theme` text NOT NULL,
   PRIMARY KEY (`Quizz_ID`)
@@ -323,15 +330,29 @@ INSERT INTO `quizz` (`Quizz_ID`, `Name`, `Theme`) VALUES
 
 DROP TABLE IF EXISTS `result`;
 CREATE TABLE IF NOT EXISTS `result` (
-  `ID_result` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_result` int NOT NULL AUTO_INCREMENT,
   `answer` text NOT NULL,
   `date` date NOT NULL,
-  `ID_extPlayer` int(11) NOT NULL,
-  `ID_extQuizz` int(11) NOT NULL,
+  `ID_extPlayer` int NOT NULL,
+  `ID_extQuizz` int NOT NULL,
+  `ID_extQuestion` int NOT NULL,
   PRIMARY KEY (`ID_result`),
   KEY `ID_extPlayer` (`ID_extPlayer`),
-  KEY `ID_extQuizz` (`ID_extQuizz`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `ID_extQuizz` (`ID_extQuizz`),
+  KEY `ID_extQuestion` (`ID_extQuestion`)
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `result`
+--
+
+INSERT INTO `result` (`ID_result`, `answer`, `date`, `ID_extPlayer`, `ID_extQuizz`, `ID_extQuestion`) VALUES
+(78, '', '2020-11-18', 16, 1, 1),
+(79, 'Un petit écureuil', '2020-11-18', 16, 1, 2),
+(80, '', '2020-11-18', 16, 1, 3),
+(81, '', '2020-11-18', 16, 1, 15),
+(82, '', '2020-11-18', 16, 1, 18),
+(83, '', '2020-11-18', 16, 1, 24);
 
 --
 -- Contraintes pour les tables déchargées
@@ -361,7 +382,8 @@ ALTER TABLE `questions`
 --
 ALTER TABLE `result`
   ADD CONSTRAINT `result_ibfk_1` FOREIGN KEY (`ID_extPlayer`) REFERENCES `player` (`Player_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `result_ibfk_2` FOREIGN KEY (`ID_extQuizz`) REFERENCES `quizz` (`Quizz_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `result_ibfk_2` FOREIGN KEY (`ID_extQuizz`) REFERENCES `quizz` (`Quizz_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `result_ibfk_3` FOREIGN KEY (`ID_extQuestion`) REFERENCES `questions` (`Question_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

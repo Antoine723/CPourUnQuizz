@@ -84,7 +84,7 @@ function getAllScoreAndPlayerNameByIdQuizz($id_quizz)
     return executeQuery($query,$id_quizz);
 }
 
-function getScoreByIdQuizzAndIdPlayer($id_quizz,$id_user)
+function getScoreByIdPlayerAndIdQuizz($id_user,$id_quizz)
 {
     $query='SELECT did.Score, player.Username FROM did
     INNER JOIN player ON did.ID_extPlayer=player.Player_ID
@@ -122,20 +122,18 @@ function changeMailbyIDUser($mail,$id_user)
     return executeQuery($query,$infos);
 }
 
-function addAllAnswerByUser($answers,$date,$id_user,$id_quizz)
+function addAllAnswerByUser($answers,$date,$id_user,$id_quizz,$id_quest)
 {
-    $query='INSERT INTO result(answer,date,ID_extPlayer,ID_extQuizz) VALUES(?,?,?,?)';
-    $infos=array($answers,$date,$id_user,$id_quizz);
+    $query='INSERT INTO result(answer,date,ID_extPlayer,ID_extQuizz,ID_extQuestion) VALUES(?,?,?,?,?)';
+    $infos=array($answers,$date,$id_user,$id_quizz,$id_quest);
     return executeQuery($query,$infos);
 }
 
 
-function getAllAnswersByIdPlayerAndIdQuizz($id_user, $id_quizz){
+function getAnswerByIdPlayerAndIdQuizzByIdQuest($id_user, $id_quizz, $id_quest){
     $query = 'SELECT * FROM result
-    INNER JOIN player ON result.ID_extPLayer=player.Player_ID
-    INNER JOIN quizz ON result.ID_extQuizz=quizz.Quizz_ID
-    WHERE player.Player_ID=? AND quizz.Quizz_ID=?';
-    $infos=array($id_user, $id_quizz);
+    WHERE result.ID_extPlayer=? AND result.ID_extQuizz=? AND result.ID_extQuestion=?';
+    $infos=array($id_user, $id_quizz,$id_quest);
     return executeQuery($query,$infos);
 }
 
@@ -144,4 +142,12 @@ function getAllScoresByIdPlayerAndIdQuizz($id_user,$id_quizz){
     WHERE did.ID_extPlayer=? AND did.ID_extQuizz=?';
     $infos=array($id_user, $id_quizz);
     return executeQuery($query,$infos);
+}
+
+function getDateOfAnswersByIdPlayerAndIdQuizz($id_user,$id_quizz){
+    $query='SELECT date FROM result
+    WHERE result.ID_extPlayer=? AND result.ID_extQuizz=?';
+    $infos=array($id_user, $id_quizz);
+    return executeQuery($query,$infos);
+
 }
