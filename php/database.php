@@ -68,12 +68,6 @@ function updateScore($id_user,$id_quizz,$updateScore)
     return executeQuery($query,$infos);
 }
 
-function getScoreByIdPlayerAndIdQuizz($id_user,$id_quizz)
-{
-    $query='SELECT * FROM did WHERE did.ID_extPlayer=? AND did.ID_extQuizz=?';
-    $infos=array($id_user,$id_quizz);
-    return executeQuery($query,$infos);
-}
 
 function getThemeByIdQuizz($id_quizz)
 {
@@ -135,3 +129,12 @@ function addAllAnswerByUser($answers,$date,$id_user,$id_quizz)
     return executeQuery($query,$infos);
 }
 
+
+function getAllAnswersByIdPlayerAndIdQuizz($id_user, $id_quizz){
+    $query = 'SELECT * FROM result
+    INNER JOIN player ON result.ID_extPLayer=player.Player_ID
+    INNER JOIN quizz ON result.ID_extQuizz=quizz.Quizz_ID
+    WHERE player.Player_ID=? AND quizz.Quizz_ID=?';
+    $infos=array($id_user, $id_quizz);
+    return executeQuery($query,$infos);
+}
