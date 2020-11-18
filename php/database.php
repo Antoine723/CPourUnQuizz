@@ -138,3 +138,10 @@ function getAllAnswersByIdPlayerAndIdQuizz($id_user, $id_quizz){
     $infos=array($id_user, $id_quizz);
     return executeQuery($query,$infos);
 }
+
+function getAllScoresByIdPlayerAndIdQuizz($id_user,$id_quizz){
+    $query='SELECT * FROM did
+    WHERE did.ID_extPlayer=? AND did.ID_extQuizz=?';
+    $infos=array($id_user, $id_quizz);
+    return executeQuery($query,$infos);
+}
