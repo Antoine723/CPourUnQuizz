@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <div>
     <p>
         <h1 class ="title">Quizz</h1>

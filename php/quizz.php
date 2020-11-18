@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 $questions=getAllQuestionsByIdQuizz($_GET['id']);
 $answers=getAllAnswersByIdQuizz($_GET['id']);

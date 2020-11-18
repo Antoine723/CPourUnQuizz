@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-    <?php
+<?php
     $good_answers=getAllGoodAnswersByIdQuizz($_GET['id']);
     $associated_score = getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'],$_GET['id']);
     $questions=getAllQuestionsByIdQuizz($_GET['id']);
@@ -60,7 +59,7 @@
     {
         updateScore($_SESSION['user_id'],$_GET['id'],$score);
     }
-    ?>
+?>
 
     <!-- --------------------AFFICHAGE------------------------ -->
 <div class="display"> 

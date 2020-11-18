@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 $all_themes=getThemeAndIdQuizzOfAllQuizz();
 ?>
