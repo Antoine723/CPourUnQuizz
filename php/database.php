@@ -127,3 +127,11 @@ function changeMailbyIDUser($mail,$id_user)
     $infos=array($mail,$id_user);
     return executeQuery($query,$infos);
 }
+
+function addAllAnswerByUser($answers,$date,$id_user,$id_quizz)
+{
+    $query='INSERT INTO result(answer,date,ID_extPlayer,ID_extQuizz) VALUES(?,?,?,?)';
+    $infos=array($answers,$date,$id_user,$id_quizz);
+    return executeQuery($query,$infos);
+}
+
