@@ -129,21 +129,20 @@
                             
                             ?>
                         <?php }
-                            else if (count($actual_answer)>1) //Si c'est une checkbox A MODIFIER
+                            else if (count($actual_answer)>1) //Si c'est une checkbox
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
-                                var_dump($actual_answer);
+                                $isCorrect=true;
+                                $array_answers_for_checkbox=array();
+                                for($i=0;$i<count($actual_answer);$i++)
+                                {
+                                    array_push($array_answers_for_checkbox,$actual_answer[$i]['answer']);
+                                }
                                 for($i=0;$i<count($good_answers_for_a_question);$i++)
                                 {
-                                    if(in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($actual_answer[0]['answer'])))
-                                    {
-                                        $isCorrect=true;    
+                                    if(!in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($array_answers_for_checkbox))) $isCorrect=false;
                                     
-                                    }
-                                    else {
-                                        $isCorrect=false;
-                                    }
                                 }
                                 if($isCorrect)
                                 { 
@@ -286,17 +285,11 @@ else
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
-                                
+                                $isCorrect=true;
                                 for($i=0;$i<count($good_answers_for_a_question);$i++)
                                 {
-                                    if(in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($_POST[$id_quest])))
-                                    {
-                                        $isCorrect=true;    
+                                    if(!in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($_POST[$id_quest]))) $isCorrect=false;
                                     
-                                    }
-                                    else {
-                                        $isCorrect=false;
-                                    }
                                 }
                                 if($isCorrect)
                                 { 
