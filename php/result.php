@@ -53,7 +53,7 @@
 ?>
 
     <!-----------------------AFFICHAGE------------------------ -->
-<?php if(isset($_GET['done']) && $_GET['done']=="true")
+<?php if(isset($_GET['done']) && $_GET['done']=="true") //S'il s'agit de consulter un résultat antérieur
 {
     $score=getScoreByIdPlayerAndIdQuizz($_SESSION['user_id'], $_GET['id']);
 ?>
@@ -198,7 +198,8 @@
 
 <?php
 }
-else
+
+else //Si c'est après avoir répondu à un quizz
 {
     $score=compute_score($good_answers,$_POST);
     if (count($associated_score) == 0)
