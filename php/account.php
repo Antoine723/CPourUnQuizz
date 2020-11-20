@@ -23,7 +23,7 @@
         {
             if(password_verify($_POST["old_password"],$user_infos[0]['Password']) && $new_password_size >= 8 && $_POST["new_password"]==$_POST["conf_new_password"])
             {
-                changePasswordbyIDUser($_POST["password"],$_SESSION["user_id"]);
+                changePasswordbyIDUser($_POST["new_password"],$_SESSION["user_id"]);
                 $modif=true;
             }
             else if($new_password_size < 8)
