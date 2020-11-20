@@ -113,7 +113,7 @@
                     $actual_answer=getAnswerByIdPlayerAndIdQuizzByIdQuest($_SESSION['user_id'],$_GET['id'],$id_quest);
                         if(!empty($actual_answer) && $actual_answer[0]['answer']!='') //Si l'utilisateur a répondu à la question actuelle
                         { 
-                            if(count($actual_answer)==1) //Si ce n'est pas une checkbox
+                            if(count($good_answers_for_a_question)==1) //Si ce n'est pas une checkbox
                             {
                                 if(strtolower(remove_accents($good_answers_for_a_question[0])) == strtolower(remove_accents($actual_answer[0]['answer']))) //Si la réponse est bonne
                                 { ?>
@@ -122,28 +122,27 @@
                                 else //Si réponse fausse
                                 {
                                     ?>
-                                    <p class="good_ans"><?=ucfirst($good_answers[0]['Answer'])?></p>
+                                    <p class="good_ans"><?=ucfirst($good_answers_for_a_question[0])?></p>
                                     <p class="bad_ans"><?=$actual_answer[0]['answer']?></p>
                                 <?php
                                 }
                             
                             ?>
                         <?php }
-                            else if (count($actual_answer)>1) //Si c'est une checkbox A MODIFIER
+                            else if (count($good_answers_for_a_question)>1) //Si c'est une checkbox
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
-                                
+                                $isCorrect=true;
+                                $array_answers_for_checkbox=array();
+                                for($i=0;$i<count($actual_answer);$i++)
+                                {
+                                    array_push($array_answers_for_checkbox,$actual_answer[$i]['answer']);
+                                }
                                 for($i=0;$i<count($good_answers_for_a_question);$i++)
                                 {
-                                    if(in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($actual_answer[0]['answer'])))
-                                    {
-                                        $isCorrect=true;    
+                                    if(!in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($array_answers_for_checkbox))) $isCorrect=false;
                                     
-                                    }
-                                    else {
-                                        $isCorrect=false;
-                                    }
                                 }
                                 if($isCorrect)
                                 { 
@@ -275,28 +274,22 @@ else
                                 else //Si réponse fausse
                                 {
                                     ?>
-                                    <p class="good_ans"><?=ucfirst($good_answers[0]['Answer'])?></p>
+                                    <p class="good_ans"><?=ucfirst($good_answers_for_a_question[0])?></p>
                                     <p class="bad_ans"><?=$_POST[$id_quest]?></p>
                                 <?php
                                 }
                             
                             ?>
                         <?php }
-                            else //Si c'est une checkbox A MODIFIER
+                            else //Si c'est une checkbox
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
-                                
+                                $isCorrect=true;
                                 for($i=0;$i<count($good_answers_for_a_question);$i++)
                                 {
-                                    if(in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($_POST[$id_quest])))
-                                    {
-                                        $isCorrect=true;    
+                                    if(!in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($_POST[$id_quest]))) $isCorrect=false;
                                     
-                                    }
-                                    else {
-                                        $isCorrect=false;
-                                    }
                                 }
                                 if($isCorrect)
                                 { 
@@ -348,12 +341,21 @@ else
                         <?php }
                         if(isset($_POST[$id_quest]) && count($associated_score) == 0)
                         {
-                            addAllAnswerByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
+                            addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
                         }
-                        /*else //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
+                        else if(isset($_POST[$id_quest]) && count($associated_score)!=0) //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
                         {
+                            deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($_SESSION['user_id'],$_GET['id'],$id_quest);
+                            if(is_array($_POST[$id_quest]))
+                            {
+                                for($h=0;$h<count($_POST[$id_quest]);$h++)
+                                {
+                                    addAllAnswersByUser($_POST[$id_quest][$h], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
+                                }
+                            }
+                            else addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
 
-                        }*/
+                        }
                         }
             }       
                 ?>
