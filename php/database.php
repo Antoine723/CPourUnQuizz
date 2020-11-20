@@ -122,7 +122,7 @@ function changeMailbyIDUser($mail,$id_user)
     return executeQuery($query,$infos);
 }
 
-function addAllAnswerByUser($answers,$date,$id_user,$id_quizz,$id_quest)
+function addAllAnswersByUser($answers,$date,$id_user,$id_quizz,$id_quest)
 {
     $query='INSERT INTO result(answer,date,ID_extPlayer,ID_extQuizz,ID_extQuestion) VALUES(?,?,?,?,?)';
     $infos=array($answers,$date,$id_user,$id_quizz,$id_quest);
@@ -150,4 +150,11 @@ function getDateOfAnswersByIdPlayerAndIdQuizz($id_user,$id_quizz){
     $infos=array($id_user, $id_quizz);
     return executeQuery($query,$infos);
 
+}
+
+function deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($id_user,$id_quizz,$id_quest){
+    $query='DELETE from result
+    WHERE result.ID_extPlayer=? AND result.ID_extQuizz=? AND result.ID_extQuestion=?';
+    $infos=array($id_user,$id_quizz,$id_quest);
+    return executeQuery($query,$infos);
 }

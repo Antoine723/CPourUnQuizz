@@ -122,7 +122,7 @@
                                 else //Si réponse fausse
                                 {
                                     ?>
-                                    <p class="good_ans"><?=ucfirst($good_answers[0]['Answer'])?></p>
+                                    <p class="good_ans"><?=ucfirst($good_answers_for_a_question[0])?></p>
                                     <p class="bad_ans"><?=$actual_answer[0]['answer']?></p>
                                 <?php
                                 }
@@ -275,14 +275,14 @@ else
                                 else //Si réponse fausse
                                 {
                                     ?>
-                                    <p class="good_ans"><?=ucfirst($good_answers[0]['Answer'])?></p>
+                                    <p class="good_ans"><?=ucfirst($good_answers_for_a_question[0])?></p>
                                     <p class="bad_ans"><?=$_POST[$id_quest]?></p>
                                 <?php
                                 }
                             
                             ?>
                         <?php }
-                            else //Si c'est une checkbox A MODIFIER
+                            else //Si c'est une checkbox
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
@@ -348,12 +348,14 @@ else
                         <?php }
                         if(isset($_POST[$id_quest]) && count($associated_score) == 0)
                         {
-                            addAllAnswerByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
+                            addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
                         }
-                        /*else //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
+                        else //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
                         {
+                            deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($_SESSION['user_id'],$_GET['id'],$id_quest);
+                            addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
 
-                        }*/
+                        }
                         }
             }       
                 ?>
