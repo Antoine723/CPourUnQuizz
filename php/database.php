@@ -158,3 +158,18 @@ function deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($id_user,$id_quizz,$id_
     $infos=array($id_user,$id_quizz,$id_quest);
     return executeQuery($query,$infos);
 }
+
+function deleteAllAnswersByUserIdAndQuizzId($id_user,$id_quizz){
+    $query='DELETE from result
+    WHERE result.ID_extPlayer=? AND result.ID_extQuizz=?';
+    $infos=array($id_user,$id_quizz);
+    return executeQuery($query,$infos);
+}
+
+function deleteScoreByUserIdAndQuizzId($id_user,$id_quizz){
+    $query='DELETE from did
+    WHERE did.ID_extPlayer=? AND did.ID_extQuizz=?';
+    $infos=array($id_user,$id_quizz);
+    return executeQuery($query,$infos);
+
+}

@@ -133,7 +133,7 @@
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
-                                
+                                var_dump($actual_answer);
                                 for($i=0;$i<count($good_answers_for_a_question);$i++)
                                 {
                                     if(in_array(remove_accents($good_answers_for_a_question[$i]),remove_accents($actual_answer[0]['answer'])))
@@ -350,10 +350,17 @@ else
                         {
                             addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
                         }
-                        else //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
+                        else if(isset($_POST[$id_quest]) && count($associated_score)!=0) //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
                         {
                             deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($_SESSION['user_id'],$_GET['id'],$id_quest);
-                            addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
+                            if(is_array($_POST[$id_quest]))
+                            {
+                                for($h=0;$h<count($_POST[$id_quest]);$h++)
+                                {
+                                    addAllAnswersByUser($_POST[$id_quest][$h], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
+                                }
+                            }
+                            else addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
 
                         }
                         }
