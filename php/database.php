@@ -103,7 +103,7 @@ function getThemeAndIdQuizzOfAllQuizz()
 function changePasswordbyIDUser($password,$id_user)
 {
     $query = 'UPDATE player SET Password = ? WHERE player.Player_ID = ? ';
-    $infos=array($password,$id_user);
+    $infos=array(password_hash($password,PASSWORD_DEFAULT),$id_user);
     return executeQuery($query,$infos);
 }
 
