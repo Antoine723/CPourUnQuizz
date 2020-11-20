@@ -103,7 +103,7 @@ function getThemeAndIdQuizzOfAllQuizz()
 function changePasswordbyIDUser($password,$id_user)
 {
     $query = 'UPDATE player SET Password = ? WHERE player.Player_ID = ? ';
-    $infos=array($password,$id_user);
+    $infos=array(password_hash($password,PASSWORD_DEFAULT),$id_user);
     return executeQuery($query,$infos);
 }
 
@@ -122,7 +122,7 @@ function changeMailbyIDUser($mail,$id_user)
     return executeQuery($query,$infos);
 }
 
-function addAllAnswerByUser($answers,$date,$id_user,$id_quizz,$id_quest)
+function addAllAnswersByUser($answers,$date,$id_user,$id_quizz,$id_quest)
 {
     $query='INSERT INTO result(answer,date,ID_extPlayer,ID_extQuizz,ID_extQuestion) VALUES(?,?,?,?,?)';
     $infos=array($answers,$date,$id_user,$id_quizz,$id_quest);
@@ -148,6 +148,28 @@ function getDateOfAnswersByIdPlayerAndIdQuizz($id_user,$id_quizz){
     $query='SELECT date FROM result
     WHERE result.ID_extPlayer=? AND result.ID_extQuizz=?';
     $infos=array($id_user, $id_quizz);
+    return executeQuery($query,$infos);
+
+}
+
+function deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($id_user,$id_quizz,$id_quest){
+    $query='DELETE from result
+    WHERE result.ID_extPlayer=? AND result.ID_extQuizz=? AND result.ID_extQuestion=?';
+    $infos=array($id_user,$id_quizz,$id_quest);
+    return executeQuery($query,$infos);
+}
+
+function deleteAllAnswersByUserIdAndQuizzId($id_user,$id_quizz){
+    $query='DELETE from result
+    WHERE result.ID_extPlayer=? AND result.ID_extQuizz=?';
+    $infos=array($id_user,$id_quizz);
+    return executeQuery($query,$infos);
+}
+
+function deleteScoreByUserIdAndQuizzId($id_user,$id_quizz){
+    $query='DELETE from did
+    WHERE did.ID_extPlayer=? AND did.ID_extQuizz=?';
+    $infos=array($id_user,$id_quizz);
     return executeQuery($query,$infos);
 
 }
