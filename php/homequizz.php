@@ -76,17 +76,17 @@
 
             }
             if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],5))){?>
-                <a href="index.php?page=result&id=5&delete=true" class="button">Supprimer résultat quizz Pub</a><?php
+                <a href="index.php?page=homequizz&id=5&delete=true" class="button">Supprimer résultat quizz Pub</a><?php
             }?>
         </p>
     </div>
     <div class="element">
         <p><?php
             if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],4))){?>
-            <a href="index.php?page=result&id=4&delete=true" class="button">Supprimer résultat quizz Parodie émission TV</a><?php
+            <a href="index.php?page=homequizz&id=4&delete=true" class="button">Supprimer résultat quizz Parodie émission TV</a><?php
             }
             if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],2))){?>
-            <a href="index.php?page=result&id=2&delete=true" class="button">Supprimer résultat Amateur</a><?php
+            <a href="index.php?page=homequizz&id=2&delete=true" class="button">Supprimer résultat Amateur</a><?php
             }?>
         </p>
     </div>
@@ -94,7 +94,7 @@
     <div class="element">
         <p><?php
             if (!empty(getAllScoresByIdPlayerAndIdQuizz($_SESSION["user_id"],3))){?>
-            <a href="index.php?page=result&id=3&delete=true" class="button">Supprimer résultat Expert</a><?php
+            <a href="index.php?page=homequizz&id=3&delete=true" class="button">Supprimer résultat Expert</a><?php
             }?>
         </p>
     </div>
