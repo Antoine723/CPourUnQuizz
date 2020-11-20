@@ -113,7 +113,7 @@
                     $actual_answer=getAnswerByIdPlayerAndIdQuizzByIdQuest($_SESSION['user_id'],$_GET['id'],$id_quest);
                         if(!empty($actual_answer) && $actual_answer[0]['answer']!='') //Si l'utilisateur a répondu à la question actuelle
                         { 
-                            if(count($actual_answer)==1) //Si ce n'est pas une checkbox
+                            if(count($good_answers_for_a_question)==1) //Si ce n'est pas une checkbox
                             {
                                 if(strtolower(remove_accents($good_answers_for_a_question[0])) == strtolower(remove_accents($actual_answer[0]['answer']))) //Si la réponse est bonne
                                 { ?>
@@ -129,7 +129,7 @@
                             
                             ?>
                         <?php }
-                            else if (count($actual_answer)>1) //Si c'est une checkbox
+                            else if (count($good_answers_for_a_question)>1) //Si c'est une checkbox
                             { ?>
                                 <div class="checkbox_global">
                                 <?php
