@@ -1,5 +1,5 @@
 <?php
-    $no_modif=false;
+    $modif=false;
     $user_infos=getAllByUserId($_SESSION['user_id']);
     if (isset($_GET["modif"]) && $_GET["modif"] == true)
     {
@@ -11,6 +11,7 @@
             if(empty(getAllByUserName($_POST["username"]))) 
             {
                 changeUsernamebyIDUser($_POST["username"],$_SESSION["user_id"]);
+                $modif=true;
             }
             else
             {
@@ -22,7 +23,8 @@
         {
             if(password_verify($_POST["old_password"],$user_infos[0]['Password']) && $new_password_size >= 8 && $_POST["new_password"]==$_POST["conf_new_password"])
             {
-                changePasswordbyIDUser($_POST["password"],$_SESSION["user_id"]);
+                changePasswordbyIDUser($_POST["new_password"],$_SESSION["user_id"]);
+                $modif=true;
             }
             else if($new_password_size < 8)
             {
@@ -45,6 +47,7 @@
                 if(filter_var($_POST['e-mail'], FILTER_VALIDATE_EMAIL))
                 {
                     changeMailbyIDUser($_POST["e-mail"], $_SESSION["user_id"]);
+                    $modif=true;
                 }
                 else
                 {
@@ -60,9 +63,6 @@
         if( !isPossibleToUpdatePassword($old_password_size, $new_password_size, $conf_new_password_size) && ($old_password_size>0 || $new_password_size>0 || $conf_new_password_size>0) ) 
         {
             $passwordError = "Veuillez remplir tous les champs nécessaires à la modification du mot de passe pour pouvoir le modifier";
-        }
-        else{
-            $no_modif=true;
         }
     }
 
@@ -137,7 +137,7 @@
         }
         else
         {
-            if (isset($_GET["modif"]) && $_GET["modif"] == true &&!$no_modif)
+            if (isset($_GET["modif"]) && $_GET["modif"] == true && $modif)
             {
                  ?>
             <div class = "success">
@@ -145,7 +145,7 @@
             </div>
             <?php
             }
-            if(isset($_GET["modif"]) && $_GET["modif"] == true && $no_modif)
+            if(isset($_GET["modif"]) && $_GET["modif"] == true && !$modif)
             {
                 ?>
                  <div class = "err">
