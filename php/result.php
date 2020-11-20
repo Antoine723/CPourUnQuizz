@@ -339,13 +339,10 @@ else
                             } ?>
                             <p class="no_ans">Aucune réponse</p>
                         <?php }
-                        if(isset($_POST[$id_quest]) && count($associated_score) == 0)
+                       
+                        if(isset($_POST[$id_quest])) //Si l'utilisateur a déjà fait le quizz, on supprime toutes ses réponses avant de les ajouter
                         {
-                            addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
-                        }
-                        else if(isset($_POST[$id_quest]) && count($associated_score)!=0) //Sinon, supprimer toutes les réponses pour cet utilisateur à ce quizz, puis ajouter les nouvelles réponses
-                        {
-                            deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($_SESSION['user_id'],$_GET['id'],$id_quest);
+                            if(count($associated_score)!=0) deleteAllAnswersByUserIdAndQuizzIdAndQuestionId($_SESSION['user_id'],$_GET['id'],$id_quest);
                             if(is_array($_POST[$id_quest]))
                             {
                                 for($h=0;$h<count($_POST[$id_quest]);$h++)
@@ -354,8 +351,10 @@ else
                                 }
                             }
                             else addAllAnswersByUser($_POST[$id_quest], date('y-m-d'),$_SESSION['user_id'],$_GET['id'],$id_quest);
+                        } 
+                        
 
-                        }
+                        
                         }
             }       
                 ?>
